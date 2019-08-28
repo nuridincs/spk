@@ -2,8 +2,8 @@
   <div class="form-msg"></div>
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <h3 style="display:block; text-align:center;"> <?php echo !empty($type) ? ucwords($type) : "Tambah" ?> Data Nilai Pegawai</h3>
-  <form id="form-tambah-nilai-pegawai" method="POST">
-    <input type="hidden" value="<?php echo !empty($type) ? $type : "" ?>" name="type">
+  <form id="form-update-nilai-pegawai" method="POST">
+    <input type="hidden" value="<?php echo !empty($type) ? $type : "" ?>" name="typeUpdate">
     <label for="">Pilih Karyawan</label>
     <div class="input-group form-group">
       <span class="input-group-addon" id="sizing-addon2">
@@ -213,7 +213,7 @@
     </div>
     <div class="form-group">
       <div class="col-md-12">
-          <button type="submit" class="form-control btn btn-primary" id="<?php //echo !empty($type) ? "updateNilaiPegawai" : "" ?>"> <i class="glyphicon glyphicon-ok"></i> <?php echo !empty($type) ? ucwords($type) : "Tambah" ?> Data</button>
+          <button type="submit" class="form-control btn btn-primary" id="<?php echo !empty($type) ? "updateNilaiPegawai" : "" ?>"> <i class="glyphicon glyphicon-ok"></i> <?php echo !empty($type) ? ucwords($type) : "Tambah" ?> Data</button>
       </div>
     </div>
   </form>

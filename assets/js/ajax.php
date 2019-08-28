@@ -79,6 +79,23 @@
 		})
 	})
 
+	$(document).on("click", ".update-dataNilaiKaryawan", function() {
+		let id = $(this).attr("data-id");
+		const data = {
+			id : id
+		}
+		
+		$.ajax({
+			method: "POST",
+			url: "<?php echo base_url('Pegawai/updateNilaiKaryawan'); ?>",
+			data: data
+		})
+		.done(function(data) {
+			$('#tempat-modal').html(data);
+			$('#update-nilai-karyawan').modal('show');
+		})
+	})
+
 	$('#form-tambah-pegawai').submit(function(e) {
 		var data = $(this).serialize();
 
@@ -106,6 +123,32 @@
 	});
 
 	$('#form-tambah-nilai-pegawai').submit(function(e) {
+		var data = $(this).serialize();
+
+		$.ajax({
+			method: 'POST',
+			url: '<?php echo base_url('Pegawai/prosesTambahNilaiPegawai'); ?>',
+			data: data
+		})
+		.done(function(data) {
+			var out = jQuery.parseJSON(data);
+
+			tampilPegawai();
+			if (out.status == 'form') {
+				$('.form-msg').html(out.msg);
+				effect_msg_form();
+			} else {
+				document.getElementById("form-tambah-pegawai").reset();
+				$('#tambah-nilai-pegawai').modal('hide');
+				$('.msg').html(out.msg);
+				effect_msg();
+			}
+		})
+		
+		e.preventDefault();
+	});
+
+	$('#form-update-nilai-pegawai').submit(function(e) {
 		var data = $(this).serialize();
 
 		$.ajax({
@@ -416,7 +459,6 @@
 	})
 
 	//Kriteria
-
 	function tampilKriteria() {
 		$.get('<?php echo base_url('Kriteria'); ?>', function(data) {
 			MyTable.fnDestroy();
@@ -425,6 +467,7 @@
 			// refresh();
 		});
 	}
+
 	$(document).on("click", ".update-dataKriteria", function() {
 		let dataId = $(this).attr("data-id");
 		let dataSplit = dataId.split('~');
@@ -470,4 +513,8 @@
 		
 		e.preventDefault();
 	});
+
+	$(document).on("click", "#role", function() {
+		console.log("role");
+	})
 </script>

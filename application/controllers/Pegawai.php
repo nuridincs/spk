@@ -5,6 +5,7 @@ class Pegawai extends AUTH_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('M_pegawai');
+		$this->load->model('M_kriteria');
 		$this->load->model('M_posisi');
 		$this->load->model('M_kota');
 	}
@@ -17,6 +18,7 @@ class Pegawai extends AUTH_Controller {
 
 		$data['dataKaryawan'] = $this->M_pegawai->select_all_by('karyawan');
 		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_pegawai();
+		$data['kriteria'] = $this->getKriteria();
 
 		$data['page'] = "pegawai";
 		$data['judul'] = "Data Pegawai";
@@ -26,6 +28,19 @@ class Pegawai extends AUTH_Controller {
 		$data['modal_tambah_nilai_pegawai'] = show_my_modal('modals/modal_tambah_nilai_pegawai', 'tambah-nilai-pegawai', $data);
 
 		$this->template->views('pegawai/home', $data);
+	}
+
+	private function getKriteria() {
+		$data['dataC1'] = $this->M_kriteria->select_all('kriteria_masa_kerja');
+		$data['dataC2'] = $this->M_kriteria->select_all('kriteria_disiplin');
+		$data['dataC3'] = $this->M_kriteria->select_all('kriteria_prestasi_kerja');
+		$data['dataC4'] = $this->M_kriteria->select_all('kriteria_kerja_sama');
+		$data['dataC5'] = $this->M_kriteria->select_all('kriteria_kecakapan');
+		$data['dataC6'] = $this->M_kriteria->select_all('kriteria_loyalitas');
+		$data['dataC7'] = $this->M_kriteria->select_all('kriteria_kepemimpinan');
+		$data['dataC8'] = $this->M_kriteria->select_all('kriteria_pendidikan');
+
+		return $data;
 	}
 
 	public function tampil() {
@@ -71,7 +86,12 @@ class Pegawai extends AUTH_Controller {
 
 		$data = $this->input->post();
 		if ($this->form_validation->run() == TRUE) {
-			$result = $this->M_pegawai->insertNilai($data);
+			if (!empty($data['type'])) {
+				$result = $this->M_pegawai->updateNilai($data);
+			} else {
+				$result = $this->M_pegawai->insertNilai($data);
+			}
+			// $result = $this->M_pegawai->insertNilai($data);
 
 			if ($result > 0) {
 				$out['status'] = '';
@@ -97,6 +117,18 @@ class Pegawai extends AUTH_Controller {
 		$data['userdata'] = $this->userdata;
 
 		echo show_my_modal('modals/modal_update_pegawai', 'update-pegawai', $data);
+	}
+
+	public function updateNilaiKaryawan() {
+		$id = trim($_POST['id']);
+
+		$data['dataNilaiPegawai'] = $this->M_pegawai->select_nilai_pegawai($id);
+		$data['dataKaryawan'] = $this->M_pegawai->select_all_by('karyawan');
+		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_pegawai();
+		$data['kriteria'] = $this->getKriteria();
+		$data['type'] = "update";
+
+		echo show_my_modal('modals/modal_tambah_nilai_pegawai', 'update-nilai-karyawan', $data);
 	}
 
 	public function prosesUpdate() {
@@ -141,7 +173,7 @@ class Pegawai extends AUTH_Controller {
 		include_once './assets/phpexcel/Classes/PHPExcel.php';
 		$objPHPExcel = new PHPExcel();
 
-		$data = $this->M_pegawai->select_all_pegawai();
+		$data = $this->M_pegawai->select_all_by('karyawan');
 
 		$objPHPExcel = new PHPExcel(); 
 		$objPHPExcel->setActiveSheetIndex(0); 
