@@ -48,6 +48,13 @@
             <span>Nilai</span>
           </a>
         </li>
+
+        <li <?php if ($page == 'laporanPenilaian') {echo 'class="active"';} ?>>
+          <a href="<?php echo base_url('Nilai/laporanPenilaian'); ?>">
+            <i class="fa fa-home"></i>
+            <span>Laporan Penilaian</span>
+          </a>
+        </li>
       <?php
         } else if (!empty($userdata->role) && $userdata->role == 'supervisor') { 
       ?>

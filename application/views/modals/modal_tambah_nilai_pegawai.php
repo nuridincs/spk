@@ -213,7 +213,7 @@
     </div>
     <div class="form-group">
       <div class="col-md-12">
-          <button type="submit" class="form-control btn btn-primary" id="<?php //echo !empty($type) ? "updateNilaiPegawai" : "" ?>"> <i class="glyphicon glyphicon-ok"></i> <?php echo !empty($type) ? ucwords($type) : "Tambah" ?> Data</button>
+          <button type="submit" class="form-control btn btn-primary" id="actionSubmitNilaiPegawai"> <i class="glyphicon glyphicon-ok"></i> <?php echo !empty($type) ? ucwords($type) : "Tambah" ?> Data</button>
       </div>
     </div>
   </form>
@@ -228,5 +228,13 @@ $(function () {
       checkboxClass: 'icheckbox_flat-blue',
       radioClass: 'iradio_flat-blue'
     });
+
+    $(document).on("click", "#actionSubmitNilaiPegawai", function() {
+      let form = document.getElementById('form-tambah-nilai-pegawai');
+      let formData = new FormData(form);
+      let data = $(this).serialize();
+      console.log($('#form-tambah-nilai-pegawai').serialize());
+      // console.log(data);
+    })
 });
 </script>

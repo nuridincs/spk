@@ -36,8 +36,8 @@ class Nilai extends AUTH_Controller {
 		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_pegawai();
 
 		$data['page'] = "laporanPenilaian";
-		$data['judul'] = "Data Nilai";
-		$data['deskripsi'] = "Manage Data Nilai";
+		$data['judul'] = "Laporan";
+		$data['deskripsi'] = "Laporan";
 
 		$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
 		$data['modal_tambah_nilai_pegawai'] = show_my_modal('modals/modal_tambah_nilai_pegawai', 'tambah-nilai-pegawai', $data);

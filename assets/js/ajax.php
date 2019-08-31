@@ -150,6 +150,8 @@
 
 	$('#form-update-nilai-pegawai').submit(function(e) {
 		var data = $(this).serialize();
+		console.log(data);
+		return false;
 
 		$.ajax({
 			method: 'POST',
