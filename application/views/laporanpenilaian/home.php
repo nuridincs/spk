@@ -293,7 +293,14 @@
 <div class="box">
   <div class="box-body">
     <div>
-      <h4>Kalkulasi Ranking</h4>
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Kalkulasi Ranking</h4>
+        </div>
+        <div class="col-md-6">
+          <a href="<?= base_url('nilai/cetakLaporan'); ?>" target="_blank" class="btn btn-block btn-success"><i class="glyphicon glyphicon glyphicon-print"></i> Cetak</a>   
+        </div>
+      </div>
     </div>
     <table class="table table-bordered table-striped">
       <thead>
@@ -302,7 +309,6 @@
           <th>Nama</th>
           <th>Nilai</th>
           <th>Ranking</th>
-          <th>Action</th>
         </tr>
       </thead>
       <tbody id="data-nilai-pegawai">
@@ -331,9 +337,6 @@
               <td><?php echo $value['nama']; ?></td>
               <td><?php echo $value['nilai']; ?></td>
               <td <?php echo $color ?> ><?php echo $value['rank']; ?></td>
-              <td>
-                <button class="form-control btn-sm btn-warning"><i class="glyphicon glyphicon glyphicon-print"></i> Cetak</button>
-              </td>
             </tr>
             <?php
           }
