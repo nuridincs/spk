@@ -4,18 +4,21 @@
   <h3 style="display:block; text-align:center;">Tambah Data Pegawai</h3>
 
   <form id="form-tambah-pegawai" method="POST">
+    <label for="">Nama</label>
     <div class="input-group form-group">
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-user"></i>
       </span>
       <input type="text" class="form-control" placeholder="Nama" name="nama" aria-describedby="sizing-addon2">
     </div>
+    <label for="">Nomor Telepon</label>
     <div class="input-group form-group">
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-phone-alt"></i>
       </span>
       <input type="text" class="form-control" placeholder="Nomor Telepon" name="telp" aria-describedby="sizing-addon2">
     </div>
+    <label for="">Kota</label>
     <div class="input-group form-group">
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-home"></i>
@@ -32,6 +35,7 @@
         ?>
       </select>
     </div>
+    <label for="">Jenis Kelamin</label>
     <div class="input-group form-group" style="display: inline-block;">
       <span class="input-group-addon" id="sizing-addon2">
       <i class="glyphicon glyphicon-tag"></i>
@@ -45,6 +49,24 @@
       <label for="perempuan">Perempuan</label>
         </span>
     </div>
+    <label for="">Level</label>
+    <div class="input-group form-group">
+      <span class="input-group-addon" id="sizing-addon2">
+        <i class="glyphicon glyphicon-briefcase"></i>
+      </span>
+      <select name="level" class="form-control" style="width: 100%">
+        <?php
+        for($lvl = 1; $lvl <= 4; $lvl++) {
+          ?>
+          <option value="<?php echo $lvl; ?>">
+            <?php echo $lvl; ?>
+          </option>
+          <?php
+        }
+        ?>
+      </select>
+    </div>
+    <label for="">Departemen</label>
     <div class="input-group form-group">
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-briefcase"></i>

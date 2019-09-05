@@ -3,19 +3,11 @@
 </div>
 
 <div class="box">
-  <div class="box-header">
-    <div class="col-md-6" style="padding: 0;">
-        <button class="form-control btn btn-primary" data-toggle="modal" data-target="#tambah-pegawai"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</button>
-    </div>
-    <div class="col-md-3">
-        <a href="<?php echo base_url('Pegawai/export'); ?>" class="form-control btn btn-default"><i class="glyphicon glyphicon glyphicon-floppy-save"></i> Export Data Excel</a>
-    </div>
-    <div class="col-md-3">
-        <button class="form-control btn btn-default" data-toggle="modal" data-target="#import-pegawai"><i class="glyphicon glyphicon glyphicon-floppy-open"></i> Import Data Excel</button>
-    </div>
-  </div>
   <!-- /.box-header -->
   <div class="box-body">
+    <div>
+      <h4>Data Karyawan</h4>
+    </div>
     <table id="list-data" class="table table-bordered table-striped">
       <thead>
         <tr>
@@ -24,11 +16,22 @@
           <th>Asal kota</th>
           <th>Jenis Kelamin</th>
           <th>Posisi</th>
-          <th style="text-align: center;">Aksi</th>
         </tr>
       </thead>
-      <tbody id="data-pegawai">
-        
+      <tbody id="data-nilai">
+      <?php
+        foreach ($dataPegawai as $pegawai) {
+          ?>
+          <tr>
+            <td><?php echo $pegawai->karyawan; ?></td>
+            <td><?php echo $pegawai->telp; ?></td>
+            <td><?php echo $pegawai->kota; ?></td>
+            <td><?php echo $pegawai->kelamin; ?></td>
+            <td><?php echo $pegawai->posisi; ?></td>
+          </tr>
+          <?php
+        }
+      ?>
       </tbody>
     </table>
   </div>
@@ -37,7 +40,7 @@
 <div class="box">
   <div class="box-body">
     <div>
-      <h4>Data Karyawan + Penilaian</h4>
+      <h4>Data Penilaian Karyawan</h4>
     </div>
     <table class="table table-bordered table-striped">
       <thead>
@@ -255,49 +258,70 @@
   </div>
 </div>
 
-<div class="box">
-  <div class="box-body">
-    <div>
-      <h4>Kalkulasi Ranking</h4>
-    </div>
-    <table class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>Nama</th>
-          <th>Nilai</th>
-        </tr>
-      </thead>
-      <tbody id="data-nilai-pegawai">
-        <?php
-          $bobotC1 = 0.15;
-          $bobotC2 = 0.10;
-          $bobotC3 = 0.15;
-          $bobotC4 = 0.10;
-          $bobotC5 = 0.10;
-          $bobotC6 = 0.10;
-          $bobotC7 = 0.2;
-          $bobotC8 = 0.10;
-          foreach ($dataNilaiKaryawan as $dataNilai) {
-            $hitungRankingC1 = ($dataNilai->bobot_c1 / max($maxC1)) * $bobotC1;
-            $hitungRankingC2 = ($dataNilai->bobot_c2 / max($maxC2)) * $bobotC2;
-            $hitungRankingC3 = ($dataNilai->bobot_c3 / max($maxC3)) * $bobotC3;
-            $hitungRankingC4 = ($dataNilai->bobot_c4 / max($maxC4)) * $bobotC4;
-            $hitungRankingC5 = ($dataNilai->bobot_c5 / max($maxC5)) * $bobotC5;
-            $hitungRankingC6 = ($dataNilai->bobot_c6 / max($maxC6)) * $bobotC6;
-            $hitungRankingC7 = ($dataNilai->bobot_c7 / max($maxC7)) * $bobotC7;
-            $hitungRankingC8 = ($dataNilai->bobot_c8 / max($maxC8)) * $bobotC8;
-
-            $kalkulasiRangking = $hitungRankingC1 + $hitungRankingC1  + $hitungRankingC2  + $hitungRankingC3  + $hitungRankingC4  + $hitungRankingC5  + $hitungRankingC7  + $hitungRankingC8;
-            ?>
+<div class="row">
+  <div class="col-md-6">
+    <div class="box">
+      <div class="box-body">
+        <div>
+          <h4>Kalkulasi Ranking</h4>
+        </div>
+        <table class="table table-bordered table-striped">
+          <thead>
             <tr>
-              <td><?php echo $dataNilai->nama; ?></td>
-              <td><?php echo number_format($kalkulasiRangking,3); ?></td>
+              <th>Nama</th>
+              <th>Nilai</th>
             </tr>
+          </thead>
+          <tbody id="data-nilai-pegawai">
             <?php
-          }
-        ?>
-      </tbody>
-    </table>
+              $bobotC1 = 0.15;
+              $bobotC2 = 0.10;
+              $bobotC3 = 0.15;
+              $bobotC4 = 0.10;
+              $bobotC5 = 0.10;
+              $bobotC6 = 0.10;
+              $bobotC7 = 0.2;
+              $bobotC8 = 0.10;
+              $resultkalkulasiRangking = [];
+              foreach ($dataNilaiKaryawan as $dataNilai) {
+                $hitungRankingC1 = ($dataNilai->bobot_c1 / max($maxC1)) * $bobotC1;
+                $hitungRankingC2 = ($dataNilai->bobot_c2 / max($maxC2)) * $bobotC2;
+                $hitungRankingC3 = ($dataNilai->bobot_c3 / max($maxC3)) * $bobotC3;
+                $hitungRankingC4 = ($dataNilai->bobot_c4 / max($maxC4)) * $bobotC4;
+                $hitungRankingC5 = ($dataNilai->bobot_c5 / max($maxC5)) * $bobotC5;
+                $hitungRankingC6 = ($dataNilai->bobot_c6 / max($maxC6)) * $bobotC6;
+                $hitungRankingC7 = ($dataNilai->bobot_c7 / max($maxC7)) * $bobotC7;
+                $hitungRankingC8 = ($dataNilai->bobot_c8 / max($maxC8)) * $bobotC8;
+
+                $kalkulasiRangking = $hitungRankingC1 + $hitungRankingC1  + $hitungRankingC2  + $hitungRankingC3  + $hitungRankingC4  + $hitungRankingC5  + $hitungRankingC7  + $hitungRankingC8;
+                $resultkalkulasiRangking[] = $hitungRankingC1 + $hitungRankingC1  + $hitungRankingC2  + $hitungRankingC3  + $hitungRankingC4  + $hitungRankingC5  + $hitungRankingC7  + $hitungRankingC8;
+                ?>
+                <tr>
+                  <td><?php echo $dataNilai->nama; ?></td>
+                  <td><?php echo number_format($kalkulasiRangking,3); ?></td>
+                </tr>
+                <?php
+              }
+            ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="box">
+      <div class="box-body">
+        <div>
+          <h4>Ranking</h4>
+        </div>
+        <div>
+        <p>
+          Ranking tertinggi adalah</p>
+          <?php echo number_format(max($resultkalkulasiRangking), 2); ?>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

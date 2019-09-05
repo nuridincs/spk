@@ -21,15 +21,15 @@
             <img src="<?php echo base_url(); ?>assets/img/<?php echo $userdata->foto; ?>" class="img-circle" alt="User Image">
 
             <p>
-              <?php echo $userdata->nama; ?> - Web Developer
-              <small>Member since Sep. 2016</small>
+              <?php echo $userdata->nama; ?>
+              <!-- <small>Member since Sep. 2016</small> -->
             </p>
           </li>
           <!-- Menu Footer-->
           <li class="user-footer">
-            <div class="pull-left">
-              <a href="<?php echo base_url('Profile'); ?>" class="btn btn-default btn-flat">Profile</a>
-            </div>
+            <!-- <div class="pull-left">
+              <a href="<?php //echo base_url('Profile'); ?>" class="btn btn-default btn-flat">Profile</a>
+            </div> -->
             <div class="pull-right">
               <a href="<?php echo base_url('Auth/logout'); ?>" class="btn btn-default btn-flat">Sign out</a>
             </div>

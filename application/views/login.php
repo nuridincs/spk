@@ -38,12 +38,18 @@
 
         <form action="<?php echo base_url('Auth/login'); ?>" method="post">
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="Username" name="username">
+            <input type="text" class="form-control" placeholder="Masukan Username/NIK" name="username">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
-          <div class="form-group has-feedback">
+          <div class="form-group has-feedback" id="password">
             <input type="password" class="form-control" placeholder="Password" name="password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+          <div class="form-group has-feedback">
+            <select name="role" id="role" class="form-control" onchange="changeForm(this)">
+              <option value="1">Admin</option>
+              <option value="2">Karyawan</option>
+            </select>
           </div>
           <div class="row">
             <!-- <div class="col-xs-8">
@@ -98,3 +104,22 @@
     </script> -->
   </body>
 </html>
+
+<script>
+  function changeForm(e) {
+    var x = document.getElementById("password");
+    if (e.value === 2) {
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    } else {
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }
+  }
+</script>

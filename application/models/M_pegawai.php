@@ -59,12 +59,37 @@ class M_pegawai extends CI_Model {
 	}
 
 	public function insert($data) {
-		$id = md5(DATE('ymdhms').rand());
-		$sql = "INSERT INTO karyawan VALUES('{$id}','" .$data['nama'] ."','" .$data['telp'] ."'," .$data['kota'] ."," .$data['jk'] ."," .$data['posisi'] .",1)";
+		$insertSquenec = $this->execute('insert', 'squence');
+		$squence = $this->getData('squence');
+		$code_toko = 11;
+		$month = date('m');
+		$date = date('d');
+		$id = $code_toko.$month.$date.$squence[0]->id;
+		$sql = "INSERT INTO karyawan(id,nama,telp,id_kota,id_kelamin,id_posisi,status,level) VALUES('{$id}','" .$data['nama'] ."','" .$data['telp'] ."'," .$data['kota'] ."," .$data['jk'] ."," .$data['posisi'] .",1," .$data['level'] .")";
 
 		$this->db->query($sql);
 
 		return $this->db->affected_rows();
+	}
+
+	public function getData($type) {
+		if ($type == 'squence') {
+			$sql = "SELECT MAX(id) AS id FROM squence";
+		}
+
+		$data = $this->db->query($sql);
+		return $data->result();
+	}
+
+	public function execute($action, $type) {
+		if ($action == 'insert') {
+			if ($type == 'squence') {
+				$sql = "INSERT INTO squence(keterangan, date) VALUES('registration','".date('Y-m-d')."')";
+			}
+
+			$this->db->query($sql);
+			return $this->db->affected_rows();
+		}
 	}
 
 	public function insert_batch($data) {
@@ -102,8 +127,17 @@ class M_pegawai extends CI_Model {
 		return $this->db->affected_rows();
 	}
 
-	public function select_nilai_pegawai() {
-		$sql = "SELECT n.id, k.nama, c1.pilihan_kriteria as c1, c2.pilihan_kriteria as c2, c3.pilihan_kriteria as c3, c4.pilihan_kriteria as c4, c5.pilihan_kriteria as c5, c6.pilihan_kriteria as c6, c7.pilihan_kriteria as c7, c8.pilihan_kriteria as c8, 
+	public function updateNilai($data) {
+		$sql = "UPDATE nilai SET id_karyawan='" .$data['id_karyawan'] ."', c1='" .$data['c1'] ."', c2=" .$data['c2'] .", c3=" .$data['c3'] .", c4=" .$data['c4'] .", c5=" .$data['c5'] .", c6=" .$data['c6'] .", c7=" .$data['c7'] .", c8=" .$data['c8'] ." WHERE id='" .$data['id'] ."'";
+
+		$this->db->query($sql);
+
+		return $this->db->affected_rows();
+	}
+
+	public function select_nilai_pegawai($id="") {
+		$condition = (!empty($id)) ? "WHERE n.id = " . $id : "";
+		$sql = "SELECT n.id, k.id as id_karyawan, k.nama, c1.pilihan_kriteria as c1, c2.pilihan_kriteria as c2, c3.pilihan_kriteria as c3, c4.pilihan_kriteria as c4, c5.pilihan_kriteria as c5, c6.pilihan_kriteria as c6, c7.pilihan_kriteria as c7, c8.pilihan_kriteria as c8, 
 						c1.bobot as bobot_c1, c2.bobot as bobot_c2, c3.bobot as bobot_c3, c4.bobot as bobot_c4, c5.bobot as bobot_c5, c6.bobot as bobot_c6, c7.bobot as bobot_c7, c8.bobot as bobot_c8
 						FROM nilai n
 						LEFT JOIN karyawan k ON n.id_karyawan = k.id
@@ -115,7 +149,7 @@ class M_pegawai extends CI_Model {
 						LEFT JOIN kriteria_loyalitas c6 ON n.c6 = c6.id
 						LEFT JOIN kriteria_kepemimpinan c7 ON n.c7 = c7.id
 						LEFT JOIN kriteria_pendidikan c8 ON n.c8 = c8.id
-		";
+		" . $condition;
 
 		$data = $this->db->query($sql);
 

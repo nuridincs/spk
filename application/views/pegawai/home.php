@@ -7,12 +7,6 @@
     <div class="col-md-6" style="padding: 0;">
         <button class="form-control btn btn-primary" data-toggle="modal" data-target="#tambah-pegawai"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</button>
     </div>
-    <div class="col-md-3">
-        <a href="<?php echo base_url('Pegawai/export'); ?>" class="form-control btn btn-default"><i class="glyphicon glyphicon glyphicon-floppy-save"></i> Export Data Excel</a>
-    </div>
-    <div class="col-md-3">
-        <button class="form-control btn btn-default" data-toggle="modal" data-target="#import-pegawai"><i class="glyphicon glyphicon glyphicon-floppy-open"></i> Import Data Excel</button>
-    </div>
   </div>
   <!-- /.box-header -->
   <div class="box-body">
@@ -72,7 +66,8 @@
               <td><?php echo $dataNilai->c7; ?></td>
               <td><?php echo $dataNilai->c8; ?></td>
               <td class="text-center">
-                <button class="btn btn-warning update-dataKriteria" data-id="<?php echo "kriteria_disiplin~".$dataNilai->id; ?>"><i class="glyphicon glyphicon-repeat"></i> Update</button>
+                <!-- <button class="btn btn-warning update-dataNilaiKaryawan" data-id="<?php //echo $dataNilai->id; ?>"><i class="glyphicon glyphicon-repeat"></i> Update</button> -->
+                <!-- <button class="btn btn-danger konfirmasiHapus-Nilai" data-id="<?php //echo $dataNilai->id; ?>" data-toggle="modal" data-target="#konfirmasiHapus"><i class="glyphicon glyphicon-remove-sign"></i> Delete</button> -->
               </td>
             </tr>
             <?php
@@ -89,6 +84,8 @@
 <div id="tempat-modal"></div>
 
 <?php show_my_confirm('konfirmasiHapus', 'hapus-dataPegawai', 'Hapus Data Ini?', 'Ya, Hapus Data Ini'); ?>
+<?php //show_my_confirm('konfirmasiHapus', 'hapus-dataPegawai', 'Hapus Data Ini?', 'Ya, Hapus Data Ini'); ?>
+
 <?php
   $data['judul'] = 'Pegawai';
   $data['url'] = 'Pegawai/import';

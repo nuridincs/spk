@@ -3,6 +3,9 @@
     <!-- Box Comment -->
     <div class="card card-widget attachment-block clearfix">
       <h4>Kriteria Masa Kerja (C1)</h4>
+      <div>
+        <!-- <button class="form-control btn btn-primary addKriteria" data-id="kriteria_masa_kerja"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</button>             -->
+      </div>
       <div class="box-body">
         <table class="table table-bordered table-striped">
           <thead>
@@ -37,6 +40,9 @@
     <!-- Box Comment -->
     <div class="card card-widget attachment-block clearfix">
       <h4>Kriteria Displin (C2)</h4>
+      <div>
+        <!-- <button class="form-control btn btn-primary addKriteria" data-id="kriteria_disiplin"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</button>             -->
+      </div>
       <div class="box-body">
         <table class="table table-bordered table-striped">
           <thead>
@@ -73,6 +79,9 @@
     <!-- Box Comment -->
     <div class="card card-widget attachment-block clearfix">
       <h4>Kriteria Prestasi Kerja (C3)</h4>
+      <div>
+        <!-- <button class="form-control btn btn-primary addKriteria" data-id="kriteria_prestasi_kerja"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</button>             -->
+      </div>
       <div class="box-body">
         <table class="table table-bordered table-striped">
           <thead>
@@ -107,6 +116,9 @@
     <!-- Box Comment -->
     <div class="card card-widget attachment-block clearfix">
       <h4>Kriteria Kerja Sama (C4)</h4>
+      <div>
+        <!-- <button class="form-control btn btn-primary addKriteria" data-id=kriteria_masa_kerja"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</button>             -->
+      </div>
       <div class="box-body">
         <table class="table table-bordered table-striped">
           <thead>
@@ -143,6 +155,9 @@
     <!-- Box Comment -->
     <div class="card card-widget attachment-block clearfix">
       <h4>Kriteria Kecakapan (C5)</h4>
+      <div>
+        <!-- <button class="form-control btn btn-primary addKriteria" data-id="kriteria_kecakapan"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</button>             -->
+      </div>
       <div class="box-body">
         <table class="table table-bordered table-striped">
           <thead>
@@ -177,6 +192,9 @@
     <!-- Box Comment -->
     <div class="card card-widget attachment-block clearfix">
       <h4>Kriteria Loyalitas (C6)</h4>
+      <div>
+        <!-- <button class="form-control btn btn-primary addKriteria" data-id="kriteria_loyalitas"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</button>             -->
+      </div>
       <div class="box-body">
         <table class="table table-bordered table-striped">
           <thead>
@@ -213,6 +231,9 @@
     <!-- Box Comment -->
     <div class="card card-widget attachment-block clearfix">
       <h4>Kriteria Kepemimpinan (C7)</h4>
+      <div>
+        <!-- <button class="form-control btn btn-primary addKriteria"data-id="kriteria_kepemimpinan"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</button>             -->
+      </div>
       <div class="box-body">
         <table class="table table-bordered table-striped">
           <thead>
@@ -247,6 +268,9 @@
     <!-- Box Comment -->
     <div class="card card-widget attachment-block clearfix">
       <h4>Kriteria Pendidikan (C8)</h4>
+      <div>
+        <!-- <button class="form-control btn btn-primary addKriteria" data-id="kriteria_pendidikan"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</button>             -->
+      </div>
       <div class="box-body">
         <table class="table table-bordered table-striped">
           <thead>
@@ -278,4 +302,18 @@
   </div>
   <!-- /.col -->
 </div>
+<?php echo $modal_tambah_kriteria; ?>
+
 <div id="tempat-modal"></div>
+<script>
+  // function addKriteria(value) {
+  //   $.ajax({
+	// 		method: 'POST',
+	// 		url: '<?php //echo base_url('Kriteria/addKriteria'); ?>',
+	// 		data: "table=" + value
+	// 	})
+	// 	.done(function(data) {
+
+	// 	})
+  // }
+</script>
