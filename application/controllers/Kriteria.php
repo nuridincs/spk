@@ -21,10 +21,18 @@ class Kriteria extends AUTH_Controller {
 		$data['page'] = "kriteria";
 		$data['judul'] = "Data Kriteria";
 		$data['deskripsi'] = "Manage Data Kriteria";
+		$data['table'] = !empty($_POST['table']) ? trim($_POST['table']) : "tabo";
 
-		$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
+		// $data['modal_tambah_kriteria'] = show_my_modal('modals/modal_tambah_kriteria', 'tambah-kriteria', $data);
 
 		$this->template->views('kriteria/home', $data);
+	}
+
+	public function addKriteria() {
+			$table = !empty($_POST['tablename']) ? trim($_POST['tablename']) : "";
+			$data['kriteria'] = ucwords(str_replace("_", " ", $table));
+			$data['kriteria_original'] = $table;
+			echo show_my_modal('modals/modal_tambah_kriteria', 'tambah-kriteria', $data);
 	}
 
 	public function tampil() {
@@ -33,10 +41,10 @@ class Kriteria extends AUTH_Controller {
 	}
 
 	public function prosesTambah() {
-		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
-		$this->form_validation->set_rules('kota', 'Kota', 'trim|required');
-		$this->form_validation->set_rules('jk', 'Jenis Kelamin', 'trim|required');
-		$this->form_validation->set_rules('posisi', 'Posisi', 'trim|required');
+		print_r($_POST);
+		$this->form_validation->set_rules('kriteria', 'Kriteria', 'trim|required');
+		$this->form_validation->set_rules('bobot', 'Bobot', 'trim|required');
+
 
 		$data = $this->input->post();
 		if ($this->form_validation->run() == TRUE) {

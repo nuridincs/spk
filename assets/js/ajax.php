@@ -470,6 +470,50 @@
 		});
 	}
 
+	$(document).on("click", ".addKriteria", function() {
+		let tablename = $(this).attr("data-id");
+		const data = {
+			tablename : tablename
+		}
+		
+		$.ajax({
+			method: "POST",
+			url: "<?php echo base_url('Kriteria/addKriteria'); ?>",
+			data: data
+		})
+		.done(function(data) {
+			$('#tempat-modal').html(data);
+			$('#tambah-kriteria').modal('show');
+		})
+	})
+
+	$('#form-tambah-kriteria').submit(function(e) {
+		var data = $(this).serialize();
+
+		$.ajax({
+			method: 'POST',
+			url: '<?php echo base_url('Kriteria/prosesTambah'); ?>',
+			data: data
+		})
+		.done(function(data) {
+			// window.location.reload();
+			// var out = jQuery.parseJSON(data);
+
+			// tampilPegawai();
+			// if (out.status == 'form') {
+			// 	$('.form-msg').html(out.msg);
+			// 	effect_msg_form();
+			// } else {
+			// 	document.getElementById("form-tambah-pegawai").reset();
+			// 	$('#tambah-pegawai').modal('hide');
+			// 	$('.msg').html(out.msg);
+			// 	effect_msg();
+			// }
+		})
+		
+		e.preventDefault();
+	});
+
 	$(document).on("click", ".update-dataKriteria", function() {
 		let dataId = $(this).attr("data-id");
 		let dataSplit = dataId.split('~');

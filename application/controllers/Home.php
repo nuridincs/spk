@@ -10,6 +10,14 @@ class Home extends AUTH_Controller {
 	}
 
 	public function index() {
+		$data['userdata'] 		= $this->userdata;
+		$data['page'] 			= "home";
+		$data['judul'] 			= "Beranda";
+		$data['deskripsi'] 		= "";
+		$this->template->views('home', $data);
+	}
+
+	public function index_default() {
 		$data['jml_pegawai'] 	= $this->M_pegawai->total_rows();
 		$data['jml_posisi'] 	= $this->M_posisi->total_rows();
 		$data['jml_kota'] 		= $this->M_kota->total_rows();
