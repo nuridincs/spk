@@ -228,13 +228,5 @@ $(function () {
       checkboxClass: 'icheckbox_flat-blue',
       radioClass: 'iradio_flat-blue'
     });
-
-    $(document).on("click", "#actionSubmitNilaiPegawai", function() {
-      let form = document.getElementById('form-tambah-nilai-pegawai');
-      let formData = new FormData(form);
-      let data = $(this).serialize();
-      console.log($('#form-tambah-nilai-pegawai').serialize());
-      // console.log(data);
-    })
 });
 </script>

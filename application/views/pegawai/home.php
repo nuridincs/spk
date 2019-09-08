@@ -66,8 +66,8 @@
               <td><?php echo $dataNilai->c7; ?></td>
               <td><?php echo $dataNilai->c8; ?></td>
               <td class="text-center">
-                <!-- <button class="btn btn-warning update-dataNilaiKaryawan" data-id="<?php //echo $dataNilai->id; ?>"><i class="glyphicon glyphicon-repeat"></i> Update</button> -->
-                <!-- <button class="btn btn-danger konfirmasiHapus-Nilai" data-id="<?php //echo $dataNilai->id; ?>" data-toggle="modal" data-target="#konfirmasiHapus"><i class="glyphicon glyphicon-remove-sign"></i> Delete</button> -->
+                <button class="btn btn-warning btn-sm update-dataNilaiKaryawan" data-id="<?php echo $dataNilai->id; ?>"><i class="glyphicon glyphicon-repeat"></i> Update</button>
+                <button class="btn btn-danger btn-sm delete-datanilaiKaryawan" data-id="<?php echo $dataNilai->id; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="glyphicon glyphicon-remove-sign"></i> Delete</button>
               </td>
             </tr>
             <?php

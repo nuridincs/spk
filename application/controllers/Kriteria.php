@@ -41,14 +41,13 @@ class Kriteria extends AUTH_Controller {
 	}
 
 	public function prosesTambah() {
-		print_r($_POST);
+		// $this->form_validation->set_rules('tablenama', 'Tablenama', 'trim|required');
 		$this->form_validation->set_rules('kriteria', 'Kriteria', 'trim|required');
 		$this->form_validation->set_rules('bobot', 'Bobot', 'trim|required');
 
-
 		$data = $this->input->post();
 		if ($this->form_validation->run() == TRUE) {
-			$result = $this->M_pegawai->insert($data);
+			$result = $this->M_kriteria->execute('insert', 'kriteria', '', $data);
 
 			if ($result > 0) {
 				$out['status'] = '';
@@ -101,8 +100,8 @@ class Kriteria extends AUTH_Controller {
 	}
 
 	public function delete() {
-		$id = $_POST['id'];
-		$result = $this->M_kriteria->delete($id);
+		$data = $this->input->post();
+		$result = $this->M_kriteria->M_kriteria->execute('delete', 'kriteria', '', $data);
 
 		if ($result > 0) {
 			echo show_succ_msg('Data Kriteria Berhasil dihapus', '20px');

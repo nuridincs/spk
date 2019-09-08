@@ -4,6 +4,7 @@
   <h3 style="display:block; text-align:center;"> <?php echo !empty($type) ? ucwords($type) : "Tambah" ?> Data Nilai Pegawai</h3>
   <form id="form-update-nilai-pegawai" method="POST">
     <input type="hidden" value="<?php echo !empty($type) ? $type : "" ?>" name="typeUpdate">
+    <input type="hidden" value="<?php echo $id ?>" name="id">
     <label for="">Pilih Karyawan</label>
     <div class="input-group form-group">
       <span class="input-group-addon" id="sizing-addon2">

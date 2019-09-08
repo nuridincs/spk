@@ -86,12 +86,48 @@ class Pegawai extends AUTH_Controller {
 
 		$data = $this->input->post();
 		if ($this->form_validation->run() == TRUE) {
-			if (!empty($data['type'])) {
+			if ($data['typeUpdate'] != '') {
 				$result = $this->M_pegawai->updateNilai($data);
 			} else {
 				$result = $this->M_pegawai->insertNilai($data);
 			}
-			// $result = $this->M_pegawai->insertNilai($data);
+
+			if ($result > 0) {
+				$out['status'] = '';
+				$out['msg'] = show_succ_msg('Data Nilai Pegawai Berhasil ditambahkan', '20px');
+			} else {
+				$out['status'] = '';
+				$out['msg'] = show_err_msg('Data Nilai Pegawai Gagal ditambahkan', '20px');
+			}
+		} else {
+			$out['status'] = 'form';
+			$out['msg'] = show_err_msg(validation_errors());
+		}
+
+		echo json_encode($out);
+	}
+
+	public function prosesUpdateNilaiPegawai() {
+		// $data = $this->input->post();
+		// $this->M_pegawai->updateNilai($data);
+		$this->form_validation->set_rules('id_karyawan', 'Id_karyawan', 'trim|required');
+		$this->form_validation->set_rules('c1', 'C1', 'trim|required');
+		$this->form_validation->set_rules('c2', 'C2', 'trim|required');
+		$this->form_validation->set_rules('c3', 'C3', 'trim|required');
+		$this->form_validation->set_rules('c4', 'C4', 'trim|required');
+		$this->form_validation->set_rules('c5', 'C5', 'trim|required');
+		$this->form_validation->set_rules('c6', 'C6', 'trim|required');
+		$this->form_validation->set_rules('c7', 'C7', 'trim|required');
+		$this->form_validation->set_rules('c8', 'C8', 'trim|required');
+
+		$data = $this->input->post();
+		if ($this->form_validation->run() == TRUE) {
+			// if ($data['typeUpdate'] != '') {
+				$result = $this->M_pegawai->updateNilai($data);
+				print_r($result);die;
+			// } else {
+			// 	$result = $this->M_pegawai->insertNilai($data);
+			// }
 
 			if ($result > 0) {
 				$out['status'] = '';
@@ -127,8 +163,9 @@ class Pegawai extends AUTH_Controller {
 		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_pegawai();
 		$data['kriteria'] = $this->getKriteria();
 		$data['type'] = "update";
+		$data['id'] = $id;
 
-		echo show_my_modal('modals/modal_tambah_nilai_pegawai', 'update-nilai-karyawan', $data);
+		echo show_my_modal('modals/modal_update_nilai_pegawai', 'update-nilai-karyawan', $data);
 	}
 
 	public function prosesUpdate() {
@@ -158,12 +195,23 @@ class Pegawai extends AUTH_Controller {
 
 	public function delete() {
 		$id = $_POST['id'];
-		$result = $this->M_pegawai->delete($id);
+		$result = $this->M_pegawai->delete('karyawan', $id);
 
 		if ($result > 0) {
-			echo show_succ_msg('Data Pegawai Berhasil dihapus', '20px');
+			echo show_succ_msg('Data Karyawan Berhasil dihapus', '20px');
 		} else {
-			echo show_err_msg('Data Pegawai Gagal dihapus', '20px');
+			echo show_err_msg('Data Karyawan Gagal dihapus', '20px');
+		}
+	}
+
+	public function deleteNilaiKaryawan() {
+		$id = $_POST['id'];
+		$result = $this->M_pegawai->delete('nilaikaryawan', $id);
+
+		if ($result > 0) {
+			echo show_succ_msg('Data Nilai Karyawan Berhasil dihapus', '20px');
+		} else {
+			echo show_err_msg('Data Nilai Karyawan Gagal dihapus', '20px');
 		}
 	}
 

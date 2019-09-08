@@ -283,7 +283,7 @@
     $resultkalkulasiRangking[] = $hitungRankingC1 + $hitungRankingC1  + $hitungRankingC2  + $hitungRankingC3  + $hitungRankingC4  + $hitungRankingC5  + $hitungRankingC7  + $hitungRankingC8;
     
     $nilaiGroup[] = array(
-      'id' => $dataNilai->id,
+      'id' => $dataNilai->id_karyawan,
       'nama' => $dataNilai->nama,
       'nilai' => number_format($kalkulasiRangking,3)
     );

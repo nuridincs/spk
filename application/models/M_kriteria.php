@@ -36,4 +36,21 @@
 			return $this->db->affected_rows();
 		}
 
+		public function execute($action, $type, $table, $data) {
+			if ($action == 'insert') {
+				if ($type == 'kriteria') {
+					$table = $data['tablename'];
+					$sql = "INSERT INTO $table(pilihan_kriteria, bobot) VALUES('".$data['kriteria']."','".$data['bobot']."')";
+				}
+			} else if ($action == 'delete') {
+				if ($type == 'kriteria') {
+					$table = $data['table'];
+					$sql = "DELETE FROM $table WHERE id='" .$data['id'] ."'";
+				}
+			}
+
+			$this->db->query($sql);
+			return $this->db->affected_rows();
+		}
+
 	}

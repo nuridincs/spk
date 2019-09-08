@@ -50,8 +50,12 @@ class M_pegawai extends CI_Model {
 		return $this->db->affected_rows();
 	}
 
-	public function delete($id) {
-		$sql = "DELETE FROM karyawan WHERE id='" .$id ."'";
+	public function delete($type, $id) {
+		if ($type == 'karyawan') {
+			$sql = "DELETE FROM karyawan WHERE id='" .$id ."'";
+		} else if ($type == 'nilaikaryawan') {
+			$sql = "DELETE FROM nilai WHERE id='" .$id ."'";
+		}
 
 		$this->db->query($sql);
 

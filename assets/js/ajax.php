@@ -106,6 +106,7 @@
 		})
 		.done(function(data) {
 			var out = jQuery.parseJSON(data);
+			window.location.reload();
 
 			tampilPegawai();
 			if (out.status == 'form') {
@@ -122,7 +123,7 @@
 		e.preventDefault();
 	});
 
-	$('#form-tambah-nilai-pegawai').submit(function(e) {
+	$(document).on("submit", "#form-tambah-nilai-pegawai", function() {
 		var data = $(this).serialize();
 
 		$.ajax({
@@ -131,48 +132,37 @@
 			data: data
 		})
 		.done(function(data) {
-			var out = jQuery.parseJSON(data);
-
-			tampilPegawai();
-			if (out.status == 'form') {
-				$('.form-msg').html(out.msg);
-				effect_msg_form();
-			} else {
-				document.getElementById("form-tambah-pegawai").reset();
-				$('#tambah-nilai-pegawai').modal('hide');
-				$('.msg').html(out.msg);
-				effect_msg();
-			}
+			window.location.reload();
 		})
-		
-		e.preventDefault();
 	});
-
-	$('#form-update-nilai-pegawai').submit(function(e) {
-		var data = $(this).serialize();
-		console.log(data);
-		return false;
-
+	
+	$(document).on("click", ".delete-datanilaiKaryawan", function() {
+		let id = $(this).attr("data-id");
+		const data = {
+			id : id
+		}
+		
 		$.ajax({
-			method: 'POST',
-			url: '<?php echo base_url('Pegawai/prosesTambahNilaiPegawai'); ?>',
+			method: "POST",
+			url: "<?php echo base_url('Pegawai/deleteNilaiKaryawan'); ?>",
 			data: data
 		})
 		.done(function(data) {
-			var out = jQuery.parseJSON(data);
-
-			tampilPegawai();
-			if (out.status == 'form') {
-				$('.form-msg').html(out.msg);
-				effect_msg_form();
-			} else {
-				document.getElementById("form-tambah-pegawai").reset();
-				$('#tambah-nilai-pegawai').modal('hide');
-				$('.msg').html(out.msg);
-				effect_msg();
-			}
+			window.location.reload();
 		})
-		
+	})
+
+	$(document).on('submit', '#form-update-nilai-pegawai', function(e){	
+		var data = $(this).serialize();
+
+		$.ajax({
+			method: 'POST',
+			url: '<?php echo base_url('Pegawai/prosesUpdateNilaiPegawai'); ?>',
+			data: data
+		})
+		.done(function(data) {
+			window.location.reload();
+		})
 		e.preventDefault();
 	});
 
@@ -487,33 +477,6 @@
 		})
 	})
 
-	$('#form-tambah-kriteria').submit(function(e) {
-		var data = $(this).serialize();
-
-		$.ajax({
-			method: 'POST',
-			url: '<?php echo base_url('Kriteria/prosesTambah'); ?>',
-			data: data
-		})
-		.done(function(data) {
-			// window.location.reload();
-			// var out = jQuery.parseJSON(data);
-
-			// tampilPegawai();
-			// if (out.status == 'form') {
-			// 	$('.form-msg').html(out.msg);
-			// 	effect_msg_form();
-			// } else {
-			// 	document.getElementById("form-tambah-pegawai").reset();
-			// 	$('#tambah-pegawai').modal('hide');
-			// 	$('.msg').html(out.msg);
-			// 	effect_msg();
-			// }
-		})
-		
-		e.preventDefault();
-	});
-
 	$(document).on("click", ".update-dataKriteria", function() {
 		let dataId = $(this).attr("data-id");
 		let dataSplit = dataId.split('~');
@@ -543,22 +506,43 @@
 		})
 		.done(function(data) {
 			window.location.reload();
-			// var out = jQuery.parseJSON(data);
-
-			// tampilKriteria();
-			// if (out.status == 'form') {
-			// 	$('.form-msg').html(out.msg);
-			// 	effect_msg_form();
-			// } else {
-			// 	document.getElementById("form-update-kriteria").reset();
-			// 	$('#update-posisi').modal('hide');
-			// 	$('.msg').html(out.msg);
-			// 	effect_msg();
-			// }
 		})
 		
 		e.preventDefault();
 	});
+
+	$(document).on('submit', '#form-tambah-kriteria', function(e){
+		var data = $(this).serialize();
+
+		$.ajax({
+			method: 'POST',
+			url: '<?php echo base_url('Kriteria/prosesTambah'); ?>',
+			data: data
+		})
+		.done(function(data) {
+			window.location.reload();
+		})
+		
+		e.preventDefault();
+	});
+
+	$(document).on("click", ".delete-dataKriteria", function() {
+		let dataId = $(this).attr("data-id");
+		let dataSplit = dataId.split('~');
+		const data = {
+			table: dataSplit[0],
+			id : dataSplit[1]
+		}
+		
+		$.ajax({
+			method: "POST",
+			url: "<?php echo base_url('Kriteria/delete'); ?>",
+			data: data
+		})
+		.done(function(data) {
+			window.location.reload();
+		})
+	})
 
 	$(document).on("click", "#role", function() {
 		console.log("role");

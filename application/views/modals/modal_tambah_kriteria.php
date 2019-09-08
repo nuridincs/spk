@@ -4,7 +4,7 @@
   <h3 style="display:block; text-align:center;">Tambah Data <?php echo $kriteria ?></h3>
 
   <form id="form-tambah-kriteria" method="POST">
-    <input type="hidden" name="id" value="<?php echo $kriteria_original ?>">
+    <input type="hidden" name="tablename" value="<?php echo $kriteria_original ?>">
     <div class="input-group form-group">
       <span class="input-group-addon" id="sizing-addon2">
         <i class="glyphicon glyphicon-user"></i>
@@ -19,7 +19,7 @@
     </div>
     <div class="form-group">
       <div class="col-md-12">
-          <button type="submit" class="form-control btn btn-primary"> <i class="glyphicon glyphicon-ok"></i> Update Data</button>
+          <button type="submit" class="form-control btn btn-primary"> <i class="glyphicon glyphicon-ok"></i> Tambah Data</button>
       </div>
     </div>
   </form>
