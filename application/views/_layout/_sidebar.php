@@ -30,7 +30,7 @@
 
         <li <?php if ($page == 'kriteria') {echo 'class="active"';} ?>>
           <a href="<?php echo base_url('Kriteria'); ?>">
-            <i class="fa fa-home"></i>
+            <i class="fa fa-list"></i>
             <span>Kriteria</span>
           </a>
         </li>
@@ -44,14 +44,14 @@
 
         <li <?php if ($page == 'nilai') {echo 'class="active"';} ?>>
           <a href="<?php echo base_url('Nilai'); ?>">
-            <i class="fa fa-home"></i>
+            <i class="fa fa-list"></i>
             <span>Nilai</span>
           </a>
         </li>
 
         <li <?php if ($page == 'laporanPenilaian') {echo 'class="active"';} ?>>
           <a href="<?php echo base_url('Nilai/laporanPenilaian'); ?>">
-            <i class="fa fa-home"></i>
+            <i class="fa fa-book"></i>
             <span>Laporan Penilaian</span>
           </a>
         </li>
@@ -67,14 +67,14 @@
 
         <li <?php if ($page == 'nilai') {echo 'class="active"';} ?>>
           <a href="<?php echo base_url('Nilai'); ?>">
-            <i class="fa fa-home"></i>
+            <i class="fa fa-file"></i>
             <span>Nilai</span>
           </a>
         </li>
 
         <li <?php if ($page == 'laporanPenilaian') {echo 'class="active"';} ?>>
           <a href="<?php echo base_url('Nilai/laporanPenilaian'); ?>">
-            <i class="fa fa-home"></i>
+            <i class="fa fa-book"></i>
             <span>Laporan Penilaian</span>
           </a>
         </li>
@@ -83,7 +83,7 @@
       ?>
         <li <?php if ($page == 'laporanPenilaian') {echo 'class="active"';} ?>>
           <a href="<?php echo base_url('Nilai/laporanPenilaian'); ?>">
-            <i class="fa fa-home"></i>
+            <i class="fa fa-file"></i>
             <span>Laporan Penilaian</span>
           </a>
         </li>
