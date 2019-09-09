@@ -39,8 +39,8 @@
     $hitungRankingC7 = ($dataNilai->bobot_c7 / max($maxC7)) * $bobotC7;
     $hitungRankingC8 = ($dataNilai->bobot_c8 / max($maxC8)) * $bobotC8;
 
-    $kalkulasiRangking = $hitungRankingC1 + $hitungRankingC1  + $hitungRankingC2  + $hitungRankingC3  + $hitungRankingC4  + $hitungRankingC5  + $hitungRankingC7  + $hitungRankingC8;
-    $resultkalkulasiRangking[] = $hitungRankingC1 + $hitungRankingC1  + $hitungRankingC2  + $hitungRankingC3  + $hitungRankingC4  + $hitungRankingC5  + $hitungRankingC7  + $hitungRankingC8;
+    $kalkulasiRangking = $hitungRankingC1 + $hitungRankingC2  + $hitungRankingC3  + $hitungRankingC4  + $hitungRankingC5 + $hitungRankingC6 + $hitungRankingC7  + $hitungRankingC8;
+    $resultkalkulasiRangking[] = $hitungRankingC1 + $hitungRankingC2  + $hitungRankingC3  + $hitungRankingC4  + $hitungRankingC5 + $hitungRankingC6 + $hitungRankingC7  + $hitungRankingC8;
     
     $nilaiGroup[] = array(
       'id' => $dataNilai->id_karyawan,
