@@ -13,11 +13,11 @@
     <table id="list-data" class="table table-bordered table-striped">
       <thead>
         <tr>
+          <th>Nik</th>
           <th>Nama</th>
-          <th>No Telp</th>
-          <th>Asal kota</th>
-          <th>Jenis Kelamin</th>
-          <th>Posisi</th>
+          <th>Jabatan</th>
+          <th>Departemen</th>
+          <th style="width:100px">DOJ</th>
           <th style="text-align: center;">Aksi</th>
         </tr>
       </thead>

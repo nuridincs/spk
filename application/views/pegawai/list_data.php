@@ -2,11 +2,11 @@
   foreach ($dataPegawai as $pegawai) {
     ?>
     <tr>
-      <td style="min-width:230px;"><?php echo $pegawai->karyawan; ?></td>
-      <td><?php echo $pegawai->telp; ?></td>
-      <td><?php echo $pegawai->kota; ?></td>
-      <td><?php echo $pegawai->kelamin; ?></td>
-      <td><?php echo $pegawai->posisi; ?></td>
+      <td><?php echo $pegawai->nik; ?></td>
+      <td><?php echo $pegawai->nama; ?></td>
+      <td><?php echo $pegawai->jabatan; ?></td>
+      <td><?php echo $pegawai->departemen; ?></td>
+      <td><?php echo $pegawai->doj; ?></td>
       <td class="text-center" style="min-width:230px;">
         <button class="btn btn-warning update-dataPegawai" data-id="<?php echo $pegawai->id; ?>"><i class="glyphicon glyphicon-repeat"></i> Update</button>
         <button class="btn btn-danger konfirmasiHapus-pegawai" data-id="<?php echo $pegawai->id; ?>" data-toggle="modal" data-target="#konfirmasiHapus"><i class="glyphicon glyphicon-remove-sign"></i> Delete</button>

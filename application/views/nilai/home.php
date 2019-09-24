@@ -11,11 +11,11 @@
     <table id="list-data" class="table table-bordered table-striped">
       <thead>
         <tr>
+          <th>Nik</th>
           <th>Nama</th>
-          <th>No Telp</th>
-          <th>Asal kota</th>
-          <th>Jenis Kelamin</th>
-          <th>Posisi</th>
+          <th>Jabatan</th>
+          <th>Departemen</th>
+          <th>Doj</th>
         </tr>
       </thead>
       <tbody id="data-nilai">
@@ -23,11 +23,11 @@
         foreach ($dataPegawai as $pegawai) {
           ?>
           <tr>
-            <td><?php echo $pegawai->karyawan; ?></td>
-            <td><?php echo $pegawai->telp; ?></td>
-            <td><?php echo $pegawai->kota; ?></td>
-            <td><?php echo $pegawai->kelamin; ?></td>
-            <td><?php echo $pegawai->posisi; ?></td>
+            <td><?php echo $pegawai->nik; ?></td>
+            <td><?php echo $pegawai->nama; ?></td>
+            <td><?php echo $pegawai->jabatan; ?></td>
+            <td><?php echo $pegawai->departemen; ?></td>
+            <td><?php echo $pegawai->doj; ?></td>
           </tr>
           <?php
         }

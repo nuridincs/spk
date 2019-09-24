@@ -4,56 +4,38 @@
   <h3 style="display:block; text-align:center;">Tambah Data Pegawai</h3>
 
   <form id="form-tambah-pegawai" method="POST">
-    <label for="">Nama</label>
-    <div class="input-group form-group">
-      <span class="input-group-addon" id="sizing-addon2">
-        <i class="glyphicon glyphicon-user"></i>
-      </span>
-      <input type="text" class="form-control" placeholder="Nama" name="nama" aria-describedby="sizing-addon2">
+    <div class="form-group">
+      <label for="">Nama</label>
+      <input type="text" class="form-control" placeholder="Nama" name="nama">
     </div>
-    <label for="">Nomor Telepon</label>
-    <div class="input-group form-group">
-      <span class="input-group-addon" id="sizing-addon2">
-        <i class="glyphicon glyphicon-phone-alt"></i>
-      </span>
-      <input type="text" class="form-control" placeholder="Nomor Telepon" name="telp" aria-describedby="sizing-addon2">
+
+    <div class="form-group">
+      <label for="">Nik</label>
+      <input type="text" class="form-control" placeholder="Nik" name="nik">
     </div>
-    <label for="">Kota</label>
-    <div class="input-group form-group">
-      <span class="input-group-addon" id="sizing-addon2">
-        <i class="glyphicon glyphicon-home"></i>
-      </span>
-      <select name="kota" class="form-control select2" aria-describedby="sizing-addon2">
+
+    <div class="form-group">
+      <label for="">Departemen</label>
+      <select name="posisi" class="form-control select2" style="width: 100%">
         <?php
-        foreach ($dataKota as $kota) {
+        foreach ($dataPosisi as $posisi) {
           ?>
-          <option value="<?php echo $kota->id; ?>">
-            <?php echo $kota->nama; ?>
+          <option value="<?php echo $posisi->id; ?>">
+            <?php echo $posisi->nama; ?>
           </option>
           <?php
         }
         ?>
       </select>
     </div>
-    <label for="">Jenis Kelamin</label>
-    <div class="input-group form-group" style="display: inline-block;">
-      <span class="input-group-addon" id="sizing-addon2">
-      <i class="glyphicon glyphicon-tag"></i>
-      </span>
-      <span class="input-group-addon">
-          <input type="radio" name="jk" value="1" id="laki" class="minimal">
-      <label for="laki">Laki-laki</label>
-        </span>
-        <span class="input-group-addon">
-          <input type="radio" name="jk" value="2" id="perempuan" class="minimal"> 
-      <label for="perempuan">Perempuan</label>
-        </span>
+    
+    <div class="form-group">
+      <label for="">Jabatan</label>
+      <input type="text" class="form-control" placeholder="Jabatan" name="jabatan">
     </div>
-    <label for="">Level</label>
-    <div class="input-group form-group">
-      <span class="input-group-addon" id="sizing-addon2">
-        <i class="glyphicon glyphicon-briefcase"></i>
-      </span>
+
+    <div class="form-group">
+      <label for="">Level</label>
       <select name="level" class="form-control" style="width: 100%">
         <?php
         for($lvl = 1; $lvl <= 4; $lvl++) {
@@ -66,26 +48,15 @@
         ?>
       </select>
     </div>
-    <label for="">Departemen</label>
-    <div class="input-group form-group">
-      <span class="input-group-addon" id="sizing-addon2">
-        <i class="glyphicon glyphicon-briefcase"></i>
-      </span>
-      <select name="posisi" class="form-control select2"  aria-describedby="sizing-addon2" style="width: 100%">
-        <?php
-        foreach ($dataPosisi as $posisi) {
-          ?>
-          <option value="<?php echo $posisi->id; ?>">
-            <?php echo $posisi->nama; ?>
-          </option>
-          <?php
-        }
-        ?>
-      </select>
+    
+    <div class="form-group">
+      <label for="">DOJ</label>
+      <input type="text" class="form-control" placeholder="DOJ" name="doj" value="<?php echo date('d F Y') ?>">
     </div>
+
     <div class="form-group">
       <div class="col-md-12">
-          <button type="submit" class="form-control btn btn-primary"> <i class="glyphicon glyphicon-ok"></i> Tambah Data</button>
+        <button type="submit" class="form-control btn btn-primary"> <i class="glyphicon glyphicon-ok"></i> Tambah Data</button>
       </div>
     </div>
   </form>

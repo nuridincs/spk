@@ -11,7 +11,9 @@ class M_pegawai extends CI_Model {
 	}
 
 	public function select_all() {
-		$sql = " SELECT karyawan.id AS id, karyawan.nama AS karyawan, karyawan.telp AS telp, kota.nama AS kota, kelamin.nama AS kelamin, posisi.nama AS posisi FROM karyawan, kota, kelamin, posisi WHERE karyawan.id_kelamin = kelamin.id AND karyawan.id_posisi = posisi.id AND karyawan.id_kota = kota.id";
+		$sql = "SELECT karyawan.*, posisi.nama AS departemen 
+				FROM karyawan, posisi 
+				WHERE karyawan.id_posisi = posisi.id";
 
 		$data = $this->db->query($sql);
 
@@ -19,7 +21,7 @@ class M_pegawai extends CI_Model {
 	}
 
 	public function select_by_id($id) {
-		$sql = "SELECT karyawan.id AS id_karyawan, karyawan.nama AS nama_karyawan, karyawan.id_kota, karyawan.id_kelamin, karyawan.id_posisi, karyawan.telp AS telp, kota.nama AS kota, kelamin.nama AS kelamin, posisi.nama AS posisi FROM karyawan, kota, kelamin, posisi WHERE karyawan.id_kota = kota.id AND karyawan.id_kelamin = kelamin.id AND karyawan.id_posisi = posisi.id AND karyawan.id = '{$id}'";
+		$sql = "SELECT * FROM karyawan where id = '{$id}'";
 
 		$data = $this->db->query($sql);
 
@@ -43,7 +45,7 @@ class M_pegawai extends CI_Model {
 	}
 
 	public function update($data) {
-		$sql = "UPDATE karyawan SET nama='" .$data['nama'] ."', telp='" .$data['telp'] ."', id_kota=" .$data['kota'] .", id_kelamin=" .$data['jk'] .", id_posisi=" .$data['posisi'] ." WHERE id='" .$data['id'] ."'";
+		$sql = "UPDATE karyawan SET nik='" .$data['nik'] ."', nama='" .$data['nama'] ."', id_posisi='" .$data['posisi'] ."', jabatan='" .$data['jabatan'] ."', level='" .$data['level'] ."', doj='" .$data['doj'] ."' WHERE id='" .$data['id'] ."'";
 
 		$this->db->query($sql);
 
@@ -63,13 +65,13 @@ class M_pegawai extends CI_Model {
 	}
 
 	public function insert($data) {
-		$insertSquenec = $this->execute('insert', 'squence');
-		$squence = $this->getData('squence');
-		$code_toko = 11;
-		$month = date('m');
-		$date = date('d');
-		$id = $code_toko.$month.$date.$squence[0]->id;
-		$sql = "INSERT INTO karyawan(id,nama,telp,id_kota,id_kelamin,id_posisi,status,level) VALUES('{$id}','" .$data['nama'] ."','" .$data['telp'] ."'," .$data['kota'] ."," .$data['jk'] ."," .$data['posisi'] .",1," .$data['level'] .")";
+		// $insertSquenec = $this->execute('insert', 'squence');
+		// $squence = $this->getData('squence');
+		// $code_toko = 11;
+		// $month = date('m');
+		// $date = date('d');
+		// $id = $code_toko.$month.$date.$squence[0]->id;
+		$sql = "INSERT INTO karyawan(nama,nik,id_posisi,jabatan,level,doj) VALUES('" .$data['nama'] ."','" .$data['nik'] ."','" .$data['posisi'] ."','" .$data['jabatan'] ."','" .$data['level'] ."','" .$data['doj'] ."')";
 
 		$this->db->query($sql);
 
