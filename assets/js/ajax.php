@@ -123,7 +123,7 @@
 		e.preventDefault();
 	});
 
-	$(document).on("submit", "#form-tambah-nilai-pegawai", function() {
+	$( "#form-tambah-nilai-pegawai" ).submit(function( event ) {
 		var data = $(this).serialize();
 
 		$.ajax({
@@ -134,12 +134,29 @@
 		.done(function(data) {
 			window.location.reload();
 		})
+		event.preventDefault();
+	});
+
+	$(document).on("submit", "#form-tambah-nilai-pegawai-old", function() {
+		var data = $(this).serialize();
+
+		$.ajax({
+			method: 'POST',
+			url: '<?php echo base_url('Pegawai/prosesTambahNilaiPegawai'); ?>',
+			data: data
+		})
+		.done(function(data) {
+			// window.location.reload();
+		})
 	});
 	
 	$(document).on("click", ".delete-datanilaiKaryawan", function() {
 		let id = $(this).attr("data-id");
+		let dataSplit = id.split('~');
+
 		const data = {
-			id : id
+			id_nilai_karyawan: dataSplit[0],
+			id_nilai : dataSplit[1]
 		}
 		
 		$.ajax({
@@ -150,9 +167,11 @@
 		.done(function(data) {
 			window.location.reload();
 		})
-	})
+	});
 
 	$(document).on('submit', '#form-update-nilai-pegawai', function(e){	
+
+		e.preventDefault();
 		var data = $(this).serialize();
 
 		$.ajax({
@@ -163,7 +182,6 @@
 		.done(function(data) {
 			window.location.reload();
 		})
-		e.preventDefault();
 	});
 
 	$(document).on('submit', '#form-update-pegawai', function(e){

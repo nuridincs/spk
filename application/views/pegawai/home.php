@@ -48,7 +48,7 @@
           <th>C6</th>
           <th>C7</th>
           <th>C8</th>
-          <!-- <th style="text-align: center;">Aksi</th> -->
+          <th style="text-align: center;">Aksi</th>
         </tr>
       </thead>
       <tbody id="data-nilai-pegawai">
@@ -66,10 +66,10 @@
               <td><?php echo $dataNilai->NC6; ?></td>
               <td><?php echo $dataNilai->NC7; ?></td>
               <td><?php echo $dataNilai->NC8; ?></td>
-              <!-- <td class="text-center">
-                <button class="btn btn-warning btn-sm update-dataNilaiKaryawan" data-id="<?php //echo $dataNilai->id; ?>"><i class="glyphicon glyphicon-repeat"></i> Update</button>
-                <button class="btn btn-danger btn-sm delete-datanilaiKaryawan" data-id="<?php //echo $dataNilai->id; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="glyphicon glyphicon-remove-sign"></i> Delete</button>
-              </td> -->
+              <td class="text-center">
+                <button class="btn btn-warning btn-sm update-dataNilaiKaryawan" data-id="<?php echo $dataNilai->id_karyawan; ?>"><i class="glyphicon glyphicon-repeat"></i> Update</button>
+                <button class="btn btn-danger btn-sm delete-datanilaiKaryawan" data-id="<?php echo $dataNilai->id."~".$dataNilai->id_nilai; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="glyphicon glyphicon-remove-sign"></i> Delete</button>
+              </td>
             </tr>
             <?php
           }

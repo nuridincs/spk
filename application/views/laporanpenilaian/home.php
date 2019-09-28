@@ -3,41 +3,6 @@
 </div>
 
 <div class="box box-hidden">
-  <!-- /.box-header -->
-  <div class="box-body">
-    <div>
-      <h4>Data Karyawan</h4>
-    </div>
-    <table id="list-data" class="table table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>Nama</th>
-          <th>No Telp</th>
-          <th>Asal kota</th>
-          <th>Jenis Kelamin</th>
-          <th>Posisi</th>
-        </tr>
-      </thead>
-      <tbody id="data-nilai">
-      <?php
-        foreach ($dataPegawai as $pegawai) {
-          ?>
-          <tr>
-            <td><?php echo $pegawai->karyawan; ?></td>
-            <td><?php echo $pegawai->telp; ?></td>
-            <td><?php echo $pegawai->kota; ?></td>
-            <td><?php echo $pegawai->kelamin; ?></td>
-            <td><?php echo $pegawai->posisi; ?></td>
-          </tr>
-          <?php
-        }
-      ?>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div class="box box-hidden">
   <div class="box-body">
     <div>
       <h4>Data Penilaian Karyawan</h4>
@@ -135,7 +100,7 @@
         ?>
         <tr>
           <td>Jumlah</td>
-          <td><?php echo max($maxC1); ?></td>
+          <td><?php echo min($maxC1); ?></td>
           <td><?php echo max($maxC2); ?></td>
           <td><?php echo max($maxC3); ?></td>
           <td><?php echo max($maxC4); ?></td>
@@ -285,7 +250,7 @@
     $nilaiGroup[] = array(
       'id' => $dataNilai->id_karyawan,
       'nama' => $dataNilai->nama,
-      'nilai' => number_format($kalkulasiRangking,3)
+      'nilai' => number_format(round($kalkulasiRangking,2),2)
     );
   }
 ?>

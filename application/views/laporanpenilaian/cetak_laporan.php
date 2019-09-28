@@ -45,7 +45,7 @@
     $nilaiGroup[] = array(
       'id' => $dataNilai->id_karyawan,
       'nama' => $dataNilai->nama,
-      'nilai' => number_format($kalkulasiRangking,3)
+      'nilai' => number_format(round($kalkulasiRangking, 2), 2)
     );
   }
 ?>

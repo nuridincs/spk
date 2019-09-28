@@ -7,17 +7,17 @@ class Pegawai extends AUTH_Controller {
 		$this->load->model('M_pegawai');
 		$this->load->model('M_kriteria');
 		$this->load->model('M_posisi');
-		$this->load->model('M_kota');
+		// $this->load->model('M_kota');
 	}
 
 	public function index() {
 		$data['userdata'] = $this->userdata;
 		$data['dataPegawai'] = $this->M_pegawai->select_all();
 		$data['dataPosisi'] = $this->M_posisi->select_all();
-		$data['dataKota'] = $this->M_kota->select_all();
+		// $data['dataKota'] = $this->M_kota->select_all();
 
 		$data['dataKaryawan'] = $this->M_pegawai->select_all_by('karyawan');
-		$data['dataNilaiKaryawanOld'] = $this->M_pegawai->select_nilai_pegawai();
+		// $data['dataNilaiKaryawanOld'] = $this->M_pegawai->selectNilaiRangeKaryawan();
 		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_karyawan();
 		$data['kriteria'] = $this->getKriteria();
 
@@ -112,6 +112,7 @@ class Pegawai extends AUTH_Controller {
 	}
 
 	public function prosesUpdateNilaiPegawai() {
+		// print_r($_POST);die("oke");
 		// $data = $this->input->post();
 		// $this->M_pegawai->updateNilai($data);
 		$this->form_validation->set_rules('id_karyawan', 'Id_karyawan', 'trim|required');
@@ -128,7 +129,7 @@ class Pegawai extends AUTH_Controller {
 		if ($this->form_validation->run() == TRUE) {
 			// if ($data['typeUpdate'] != '') {
 				$result = $this->M_pegawai->updateNilai($data);
-				print_r($result);die;
+				// print_r($result);die;
 			// } else {
 			// 	$result = $this->M_pegawai->insertNilai($data);
 			// }
@@ -153,7 +154,7 @@ class Pegawai extends AUTH_Controller {
 
 		$data['dataPegawai'] = $this->M_pegawai->select_by_id($id);
 		$data['dataPosisi'] = $this->M_posisi->select_all();
-		$data['dataKota'] = $this->M_kota->select_all();
+		// $data['dataKota'] = $this->M_kota->select_all();
 		$data['userdata'] = $this->userdata;
 
 		echo show_my_modal('modals/modal_update_pegawai', 'update-pegawai', $data);
@@ -161,10 +162,9 @@ class Pegawai extends AUTH_Controller {
 
 	public function updateNilaiKaryawan() {
 		$id = trim($_POST['id']);
-
-		$data['dataNilaiPegawai'] = $this->M_pegawai->select_nilai_pegawai($id);
+		$data['dataNilaiPegawai'] = $this->M_pegawai->selectNilaiRangeKaryawan($id);
 		$data['dataKaryawan'] = $this->M_pegawai->select_all_by('karyawan');
-		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_pegawai();
+		$data['dataNilaiKaryawan'] = $this->M_pegawai->selectNilaiRangeKaryawan();
 		$data['kriteria'] = $this->getKriteria();
 		$data['type'] = "update";
 		$data['id'] = $id;
@@ -211,14 +211,23 @@ class Pegawai extends AUTH_Controller {
 	}
 
 	public function deleteNilaiKaryawan() {
-		$id = $_POST['id'];
-		$result = $this->M_pegawai->delete('nilaikaryawan', $id);
+		$id_nilai_karyawan = $_POST['id_nilai_karyawan'];
+		$id_nilai = $_POST['id_nilai'];
 
-		if ($result > 0) {
-			echo show_succ_msg('Data Nilai Karyawan Berhasil dihapus', '20px');
-		} else {
-			echo show_err_msg('Data Nilai Karyawan Gagal dihapus', '20px');
-		}
+		$this->db->where('id', $id_nilai_karyawan);
+		$this->db->delete('nilai_karyawan');
+
+		$this->db->where('id', $id_nilai);
+		$this->db->delete('nilai');
+
+		// $result = $this->M_pegawai->delete('nilai_karyawan', $id_nilai_karyawan);
+		// $result = $this->M_pegawai->delete('nilai', $id_nilai);
+
+		// if ($result > 0) {
+		// 	echo show_succ_msg('Data Nilai Karyawan Berhasil dihapus', '20px');
+		// } else {
+		// 	echo show_err_msg('Data Nilai Karyawan Gagal dihapus', '20px');
+		// }
 	}
 
 	public function export() {
