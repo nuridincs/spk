@@ -8,7 +8,6 @@
         <button class="form-control btn btn-primary" data-toggle="modal" data-target="#tambah-pegawai"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</button>
     </div>
   </div>
-  <!-- /.box-header -->
   <div class="box-body">
     <table id="list-data" class="table table-bordered table-striped">
       <thead>
@@ -31,7 +30,7 @@
 <div class="box">
   <div class="box-body">
     <div>
-      <h4>Data Karyawan + Penilaian</h4>
+      <h4>Data Nilai Karyawan</h4>
       <span align="right">
         <button class="form-control btn btn-primary" data-toggle="modal" data-target="#tambah-nilai-pegawai"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</button>
       </span>
@@ -39,6 +38,7 @@
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
+          <th>Nik</th>
           <th>Nama</th>
           <th>C1</th>
           <th>C2</th>
@@ -48,7 +48,7 @@
           <th>C6</th>
           <th>C7</th>
           <th>C8</th>
-          <th style="text-align: center;">Aksi</th>
+          <!-- <th style="text-align: center;">Aksi</th> -->
         </tr>
       </thead>
       <tbody id="data-nilai-pegawai">
@@ -56,19 +56,20 @@
           foreach ($dataNilaiKaryawan as $dataNilai) {
             ?>
             <tr>
+              <td><?php echo $dataNilai->nik; ?></td>
               <td><?php echo $dataNilai->nama; ?></td>
-              <td><?php echo $dataNilai->c1; ?></td>
-              <td><?php echo $dataNilai->c2; ?></td>
-              <td><?php echo $dataNilai->c3; ?></td>
-              <td><?php echo $dataNilai->c4; ?></td>
-              <td><?php echo $dataNilai->c5; ?></td>
-              <td><?php echo $dataNilai->c6; ?></td>
-              <td><?php echo $dataNilai->c7; ?></td>
-              <td><?php echo $dataNilai->c8; ?></td>
-              <td class="text-center">
-                <button class="btn btn-warning btn-sm update-dataNilaiKaryawan" data-id="<?php echo $dataNilai->id; ?>"><i class="glyphicon glyphicon-repeat"></i> Update</button>
-                <button class="btn btn-danger btn-sm delete-datanilaiKaryawan" data-id="<?php echo $dataNilai->id; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="glyphicon glyphicon-remove-sign"></i> Delete</button>
-              </td>
+              <td><?php echo $dataNilai->NC1; ?></td>
+              <td><?php echo $dataNilai->NC2; ?></td>
+              <td><?php echo $dataNilai->NC3; ?></td>
+              <td><?php echo $dataNilai->NC4; ?></td>
+              <td><?php echo $dataNilai->NC5; ?></td>
+              <td><?php echo $dataNilai->NC6; ?></td>
+              <td><?php echo $dataNilai->NC7; ?></td>
+              <td><?php echo $dataNilai->NC8; ?></td>
+              <!-- <td class="text-center">
+                <button class="btn btn-warning btn-sm update-dataNilaiKaryawan" data-id="<?php //echo $dataNilai->id; ?>"><i class="glyphicon glyphicon-repeat"></i> Update</button>
+                <button class="btn btn-danger btn-sm delete-datanilaiKaryawan" data-id="<?php //echo $dataNilai->id; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')"><i class="glyphicon glyphicon-remove-sign"></i> Delete</button>
+              </td> -->
             </tr>
             <?php
           }

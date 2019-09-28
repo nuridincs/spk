@@ -15,7 +15,9 @@ class Nilai extends AUTH_Controller {
 		
 
 		$data['dataKaryawan'] = $this->M_pegawai->select_all_by('karyawan');
-		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_pegawai();
+		$data['dataNilaiKaryawanold'] = $this->M_pegawai->select_nilai_pegawai();
+		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_karyawan();
+		$data['dataNilaiRangeKaryawan'] = $this->M_pegawai->selectNilaiRangeKaryawan();
 
 		$data['page'] = "nilai";
 		$data['judul'] = "Data Nilai";

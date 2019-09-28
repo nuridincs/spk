@@ -40,11 +40,56 @@
 <div class="box">
   <div class="box-body">
     <div>
-      <h4>Data Penilaian Karyawan</h4>
+      <h4>Data Nilai Karyawan</h4>
     </div>
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
+          <th>Nik</th>
+          <th>Nama</th>
+          <th>Masa Kerja</th>
+          <th>Disiplin</th>
+          <th>Prestasi Kerja</th>
+          <th>Kerja Sama</th>
+          <th>Kecakapan</th>
+          <th>Loyalitas</th>
+          <th>Kepemimpinan</th>
+          <th>Pendidikan</th>
+        </tr>
+      </thead>
+      <tbody id="data-nilai-pegawai">
+        <?php
+          foreach ($dataNilaiKaryawan as $dataNilai) {
+            ?>
+            <tr>
+              <td><?php echo $dataNilai->nik; ?></td>
+              <td><?php echo $dataNilai->nama; ?></td>
+              <td><?php echo $dataNilai->NC1; ?></td>
+              <td><?php echo $dataNilai->NC2; ?></td>
+              <td><?php echo $dataNilai->NC3; ?></td>
+              <td><?php echo $dataNilai->NC4; ?></td>
+              <td><?php echo $dataNilai->NC5; ?></td>
+              <td><?php echo $dataNilai->NC6; ?></td>
+              <td><?php echo $dataNilai->NC7; ?></td>
+              <td><?php echo $dataNilai->NC8; ?></td>
+            </tr>
+            <?php
+          }
+        ?>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="box">
+  <div class="box-body">
+    <div>
+      <h4>Range</h4>
+    </div>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Nik</th>
           <th>Nama</th>
           <th>C1</th>
           <th>C2</th>
@@ -58,18 +103,19 @@
       </thead>
       <tbody id="data-nilai-pegawai">
         <?php
-          foreach ($dataNilaiKaryawan as $dataNilai) {
+          foreach ($dataNilaiRangeKaryawan as $dataNilaiRange) {
             ?>
             <tr>
-              <td><?php echo $dataNilai->nama; ?></td>
-              <td><?php echo $dataNilai->c1; ?></td>
-              <td><?php echo $dataNilai->c2; ?></td>
-              <td><?php echo $dataNilai->c3; ?></td>
-              <td><?php echo $dataNilai->c4; ?></td>
-              <td><?php echo $dataNilai->c5; ?></td>
-              <td><?php echo $dataNilai->c6; ?></td>
-              <td><?php echo $dataNilai->c7; ?></td>
-              <td><?php echo $dataNilai->c8; ?></td>
+              <td><?php echo $dataNilaiRange->nik; ?></td>
+              <td><?php echo $dataNilaiRange->nama; ?></td>
+              <td><?php echo $dataNilaiRange->c1; ?></td>
+              <td><?php echo $dataNilaiRange->c2; ?></td>
+              <td><?php echo $dataNilaiRange->c3; ?></td>
+              <td><?php echo $dataNilaiRange->c4; ?></td>
+              <td><?php echo $dataNilaiRange->c5; ?></td>
+              <td><?php echo $dataNilaiRange->c6; ?></td>
+              <td><?php echo $dataNilaiRange->c7; ?></td>
+              <td><?php echo $dataNilaiRange->c8; ?></td>
             </tr>
             <?php
           }
@@ -87,6 +133,7 @@
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
+          <th>Nik</th>
           <th>Nama</th>
           <th>C1</th>
           <th>C2</th>
@@ -109,7 +156,7 @@
           $maxC7 = [];
           $maxC8 = [];
 
-          foreach ($dataNilaiKaryawan as $dataNilai) {
+          foreach ($dataNilaiRangeKaryawan as $dataNilai) {
             $maxC1[] = $dataNilai->bobot_c1;
             $maxC2[] = $dataNilai->bobot_c2;
             $maxC3[] = $dataNilai->bobot_c3;
@@ -120,6 +167,7 @@
             $maxC8[] = $dataNilai->bobot_c8;
             ?>
             <tr>
+              <td><?php echo $dataNilai->nik; ?></td>
               <td><?php echo $dataNilai->nama; ?></td>
               <td><?php echo $dataNilai->bobot_c1; ?></td>
               <td><?php echo $dataNilai->bobot_c2; ?></td>
@@ -135,7 +183,7 @@
         ?>
         <tr>
           <td>Jumlah</td>
-          <td><?php echo max($maxC1); ?></td>
+          <td><?php echo min($maxC1); ?></td>
           <td><?php echo max($maxC2); ?></td>
           <td><?php echo max($maxC3); ?></td>
           <td><?php echo max($maxC4); ?></td>
@@ -170,7 +218,7 @@
       </thead>
       <tbody id="data-nilai-pegawai">
         <?php
-          foreach ($dataNilaiKaryawan as $dataNilai) {
+          foreach ($dataNilaiRangeKaryawan as $dataNilai) {
             $normalisasiC1 = $dataNilai->bobot_c1 / max($maxC1);
             $normalisasiC2 = $dataNilai->bobot_c2 / max($maxC2);
             $normalisasiC3 = $dataNilai->bobot_c3 / max($maxC3);
@@ -229,7 +277,7 @@
           $bobotC6 = 0.10;
           $bobotC7 = 0.2;
           $bobotC8 = 0.10;
-          foreach ($dataNilaiKaryawan as $dataNilai) {
+          foreach ($dataNilaiRangeKaryawan as $dataNilai) {
             $hitungRankingC1 = ($dataNilai->bobot_c1 / max($maxC1)) * $bobotC1;
             $hitungRankingC2 = ($dataNilai->bobot_c2 / max($maxC2)) * $bobotC2;
             $hitungRankingC3 = ($dataNilai->bobot_c3 / max($maxC3)) * $bobotC3;
@@ -283,7 +331,7 @@
               $bobotC7 = 0.2;
               $bobotC8 = 0.10;
               $resultkalkulasiRangking = [];
-              foreach ($dataNilaiKaryawan as $dataNilai) {
+              foreach ($dataNilaiRangeKaryawan as $dataNilai) {
                 $hitungRankingC1 = ($dataNilai->bobot_c1 / max($maxC1)) * $bobotC1;
                 $hitungRankingC2 = ($dataNilai->bobot_c2 / max($maxC2)) * $bobotC2;
                 $hitungRankingC3 = ($dataNilai->bobot_c3 / max($maxC3)) * $bobotC3;
@@ -298,7 +346,7 @@
                 ?>
                 <tr>
                   <td><?php echo $dataNilai->nama; ?></td>
-                  <td><?php echo number_format($kalkulasiRangking,3); ?></td>
+                  <td><?php echo number_format(round($kalkulasiRangking,2),2); ?></td>
                 </tr>
                 <?php
               }

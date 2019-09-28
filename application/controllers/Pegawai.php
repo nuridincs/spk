@@ -17,7 +17,8 @@ class Pegawai extends AUTH_Controller {
 		$data['dataKota'] = $this->M_kota->select_all();
 
 		$data['dataKaryawan'] = $this->M_pegawai->select_all_by('karyawan');
-		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_pegawai();
+		$data['dataNilaiKaryawanOld'] = $this->M_pegawai->select_nilai_pegawai();
+		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_karyawan();
 		$data['kriteria'] = $this->getKriteria();
 
 		$data['page'] = "pegawai";
@@ -88,11 +89,12 @@ class Pegawai extends AUTH_Controller {
 
 		$data = $this->input->post();
 		if ($this->form_validation->run() == TRUE) {
-			if ($data['typeUpdate'] != '') {
-				$result = $this->M_pegawai->updateNilai($data);
-			} else {
-				$result = $this->M_pegawai->insertNilai($data);
-			}
+			// if ($data['typeUpdate'] != '') {
+			// 	$result = $this->M_pegawai->updateNilai($data);
+			// } else {
+			// 	$result = $this->M_pegawai->insertNilai($data);
+			// }
+			$result = $this->M_pegawai->insertNilai($data);
 
 			if ($result > 0) {
 				$out['status'] = '';
