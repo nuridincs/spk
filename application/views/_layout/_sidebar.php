@@ -87,6 +87,12 @@
             <span>Laporan Penilaian</span>
           </a>
         </li>
+        <li <?php if ($page == 'nilai') {echo 'class="active"';} ?>>
+          <a href="<?php echo base_url('Nilai/karyawan'); ?>">
+            <i class="fa fa-file"></i>
+            <span>Nilai</span>
+          </a>
+        </li>
       <?php
         }
       ?>

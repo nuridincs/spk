@@ -4,12 +4,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Kota extends AUTH_Controller {
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('M_kota');
+		// $this->load->model('M_kota');
 	}
 
 	public function index() {
 		$data['userdata'] 	= $this->userdata;
-		$data['dataKota'] 	= $this->M_kota->select_all();
+		// $data['dataKota'] 	= $this->M_kota->select_all();
 
 		$data['page'] 		= "kota";
 		$data['judul'] 		= "Data Kota";
@@ -21,7 +21,7 @@ class Kota extends AUTH_Controller {
 	}
 
 	public function tampil() {
-		$data['dataKota'] = $this->M_kota->select_all();
+		$data['dataKota'] = [];//$this->M_kota->select_all();
 		$this->load->view('kota/list_data', $data);
 	}
 

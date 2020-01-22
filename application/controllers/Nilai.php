@@ -29,6 +29,27 @@ class Nilai extends AUTH_Controller {
 		$this->template->views('Nilai/home', $data);
 	}
 
+	public function karyawan() {
+		$data['userdata'] = $this->userdata;
+		$data['dataPegawai'] = $this->M_pegawai->select_all();
+		$user_id = $data['userdata']->id;
+		
+
+		$data['dataKaryawan'] = $this->M_pegawai->select_all_by('karyawan');
+		$data['dataNilaiKaryawanold'] = $this->M_pegawai->select_nilai_pegawai();
+		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_karyawan();
+		$data['dataNilaiRangeKaryawan'] = $this->M_pegawai->selectNilaiRangeKaryawan($user_id);
+
+		$data['page'] = "nilai";
+		$data['judul'] = "Data Nilai";
+		$data['deskripsi'] = "Manage Data Nilai";
+
+		$data['modal_tambah_pegawai'] = show_my_modal('modals/modal_tambah_pegawai', 'tambah-pegawai', $data);
+		$data['modal_tambah_nilai_pegawai'] = show_my_modal('modals/modal_tambah_nilai_pegawai', 'tambah-nilai-pegawai', $data);
+
+		$this->template->views('Nilai/nilai_by_karyawan', $data);
+	}
+
 	public function laporanPenilaian() {
 		$data['userdata'] = $this->userdata;
 		$data['dataPegawai'] = $this->M_pegawai->select_all();

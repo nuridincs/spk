@@ -20,6 +20,8 @@ class Pegawai extends AUTH_Controller {
 		// $data['dataNilaiKaryawanOld'] = $this->M_pegawai->selectNilaiRangeKaryawan();
 		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_karyawan();
 		$data['kriteria'] = $this->getKriteria();
+		$data['jabatan'] = $this->M_pegawai->fetchData('jabatan');
+		$data['level'] = $this->M_pegawai->fetchData('jabatan');
 
 		$data['page'] = "pegawai";
 		$data['judul'] = "Data Pegawai";
@@ -154,6 +156,8 @@ class Pegawai extends AUTH_Controller {
 
 		$data['dataPegawai'] = $this->M_pegawai->select_by_id($id);
 		$data['dataPosisi'] = $this->M_posisi->select_all();
+		$data['dataJabatan'] = $this->M_pegawai->fetchData('jabatan');
+		$data['dataLevel'] = $this->M_pegawai->fetchData('jabatan');
 		// $data['dataKota'] = $this->M_kota->select_all();
 		$data['userdata'] = $this->userdata;
 

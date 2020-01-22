@@ -31,17 +31,28 @@
     
     <div class="form-group">
       <label for="">Jabatan</label>
-      <input type="text" class="form-control" placeholder="Jabatan" name="jabatan">
+      <!-- <input type="text" class="form-control" placeholder="Jabatan" name="jabatan"> -->
+      <select name="jabatan" class="form-control select2" style="width: 100%">
+        <?php
+        foreach ($jabatan as $jabatan) {
+          ?>
+          <option value="<?php echo $jabatan->id; ?>">
+            <?php echo $jabatan->nama_jabatan; ?>
+          </option>
+          <?php
+        }
+        ?>
+      </select>
     </div>
 
     <div class="form-group">
       <label for="">Level</label>
       <select name="level" class="form-control" style="width: 100%">
         <?php
-        for($lvl = 1; $lvl <= 4; $lvl++) {
+        foreach ($level as $level) {
           ?>
-          <option value="<?php echo $lvl; ?>">
-            <?php echo $lvl; ?>
+          <option value="<?php echo $level->id; ?>">
+            <?php echo $level->level; ?>
           </option>
           <?php
         }
@@ -51,7 +62,7 @@
     
     <div class="form-group">
       <label for="">DOJ</label>
-      <input type="text" class="form-control" placeholder="DOJ" name="doj" value="<?php echo date('d F Y') ?>">
+      <input type="text" class="form-control" placeholder="DOJ" name="doj" value="<?php echo date('Y-m-d') ?>">
     </div>
 
     <div class="form-group">

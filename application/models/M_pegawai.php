@@ -11,8 +11,10 @@ class M_pegawai extends CI_Model {
 	}
 
 	public function select_all() {
-		$sql = "SELECT karyawan.*, posisi.nama AS departemen 
-				FROM karyawan, posisi 
+		$sql = "SELECT karyawan.*, posisi.nama AS departemen, DATE_FORMAT(karyawan.doj,'%d %b %Y') as k_doj, jabatan.*
+				FROM karyawan
+				INNER JOIN posisi ON posisi.id = karyawan.id_posisi
+				INNER JOIN jabatan ON jabatan.id = karyawan.jabatan
 				WHERE karyawan.id_posisi = posisi.id";
 
 		$data = $this->db->query($sql);
@@ -267,6 +269,12 @@ class M_pegawai extends CI_Model {
 		$data = $this->db->query($sql);
 
 		return $data->result();
+	}
+
+	public function fetchData($table) {
+		$result = $this->db->get($table);
+
+		return $result->result();
 	}
 }
 

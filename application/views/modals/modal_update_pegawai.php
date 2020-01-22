@@ -3,7 +3,8 @@
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <h3 style="display:block; text-align:center;">Update Data Pegawai</h3>
       <form method="POST" id="form-update-pegawai">
-        <input type="hidden" name="id" value="<?php echo $dataPegawai->id; ?>">
+        <?php print_r($dataPegawai); ?>
+        <input type="text" name="id" value="<?php echo $dataPegawai->id; ?>">
 
         <div class="form-group">
           <label for="">Nama</label>
@@ -30,7 +31,26 @@
 
         <div class="form-group">
           <label for="">Jabatan</label>
-          <input type="text" class="form-control" placeholder="Jabatan" name="jabatan" value="<?php echo $dataPegawai->jabatan; ?>">
+          <!-- <input type="text" class="form-control" placeholder="Jabatan" name="jabatan" value="<?php //echo $dataPegawai->jabatan; ?>"> -->
+          <select name="jabatan" class="form-control select2" style="width: 100%">
+          <?php
+          foreach ($dataJabatan as $jabatan) {
+            if ($dataPegawai->jabatan === $jabatan->id) {
+          ?>
+            <option value="<?php echo $jabatan->id; ?>" selected>
+              <?php echo $jabatan->nama_jabatan; ?>
+            </option>
+          <?php
+            } else {
+            ?>
+            <option value="<?php echo $jabatan->id; ?>">
+              <?php echo $jabatan->nama_jabatan; ?>
+            </option>
+            <?php
+          }
+          }
+          ?>
+        </select>
         </div>
 
         <div class="form-group">

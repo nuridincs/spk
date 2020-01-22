@@ -2,11 +2,10 @@
   <?php echo @$this->session->flashdata('msg'); ?>
 </div>
 
-<div class="box">
-  <!-- /.box-header -->
+<!-- <div class="box">
   <div class="box-body">
     <div>
-      <h4>Data Karyawan</h4>
+      <h4>Data By Karyawan</h4>
     </div>
     <table id="list-data" class="table table-bordered table-striped">
       <thead>
@@ -35,9 +34,9 @@
       </tbody>
     </table>
   </div>
-</div>
+</div> -->
 
-<div class="box">
+<!-- <div class="box">
   <div class="box-body">
     <div>
       <h4>Data Nilai Karyawan</h4>
@@ -79,7 +78,7 @@
       </tbody>
     </table>
   </div>
-</div>
+</div> -->
 
 <div class="box">
   <div class="box-body">
@@ -353,21 +352,6 @@
             ?>
           </tbody>
         </table>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-6">
-    <div class="box">
-      <div class="box-body">
-        <div>
-          <h4>Ranking</h4>
-        </div>
-        <div>
-        <p>
-          Ranking tertinggi adalah</p>
-          <?php echo number_format(max($resultkalkulasiRangking), 2); ?>
-        </div>
       </div>
     </div>
   </div>
