@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SPK LOTTE MART | Dashboard</title>
+    <title>SPK ONE PROPERTY | Dashboard</title>
     <!-- meta -->
     <?php echo @$_meta; ?>
 
-    <!-- css --> 
+    <!-- css -->
     <?php echo @$_css; ?>
 
     <!-- jQuery 2.2.3 -->
@@ -16,16 +16,16 @@
     <div class="wrapper">
       <!-- header -->
       <?php echo @$_header; ?> <!-- nav -->
-      
+
       <!-- sidebar -->
       <?php echo @$_sidebar; ?>
-      
+
       <!-- content -->
       <?php echo @$_content; ?> <!-- headerContent --><!-- mainContent -->
-    
+
       <!-- footer -->
       <?php echo @$_footer; ?>
-    
+
       <div class="control-sidebar-bg"></div>
     </div>
 

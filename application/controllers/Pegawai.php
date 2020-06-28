@@ -14,10 +14,8 @@ class Pegawai extends AUTH_Controller {
 		$data['userdata'] = $this->userdata;
 		$data['dataPegawai'] = $this->M_pegawai->select_all();
 		$data['dataPosisi'] = $this->M_posisi->select_all();
-		// $data['dataKota'] = $this->M_kota->select_all();
 
 		$data['dataKaryawan'] = $this->M_pegawai->select_all_by('karyawan');
-		// $data['dataNilaiKaryawanOld'] = $this->M_pegawai->selectNilaiRangeKaryawan();
 		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_karyawan();
 		$data['kriteria'] = $this->getKriteria();
 		$data['jabatan'] = $this->M_pegawai->fetchData('jabatan');
@@ -35,13 +33,10 @@ class Pegawai extends AUTH_Controller {
 
 	private function getKriteria() {
 		$data['dataC1'] = $this->M_kriteria->select_all('kriteria_masa_kerja');
-		$data['dataC2'] = $this->M_kriteria->select_all('kriteria_disiplin');
-		$data['dataC3'] = $this->M_kriteria->select_all('kriteria_prestasi_kerja');
-		$data['dataC4'] = $this->M_kriteria->select_all('kriteria_kerja_sama');
-		$data['dataC5'] = $this->M_kriteria->select_all('kriteria_kecakapan');
-		$data['dataC6'] = $this->M_kriteria->select_all('kriteria_loyalitas');
-		$data['dataC7'] = $this->M_kriteria->select_all('kriteria_kepemimpinan');
-		$data['dataC8'] = $this->M_kriteria->select_all('kriteria_pendidikan');
+		$data['dataC2'] = $this->M_kriteria->select_all('kriteria_absensi');
+		$data['dataC3'] = $this->M_kriteria->select_all('kriteria_target_penjualan');
+		$data['dataC4'] = $this->M_kriteria->select_all('kriteria_status_kepegawaian');
+		$data['dataC5'] = $this->M_kriteria->select_all('kriteria_pendidikan');
 
 		return $data;
 	}
@@ -158,7 +153,6 @@ class Pegawai extends AUTH_Controller {
 		$data['dataPosisi'] = $this->M_posisi->select_all();
 		$data['dataJabatan'] = $this->M_pegawai->fetchData('jabatan');
 		$data['dataLevel'] = $this->M_pegawai->fetchData('jabatan');
-		// $data['dataKota'] = $this->M_kota->select_all();
 		$data['userdata'] = $this->userdata;
 
 		echo show_my_modal('modals/modal_update_pegawai', 'update-pegawai', $data);

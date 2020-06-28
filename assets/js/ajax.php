@@ -67,7 +67,7 @@
 
 	$(document).on("click", ".update-dataPegawai", function() {
 		var id = $(this).attr("data-id");
-		
+
 		$.ajax({
 			method: "POST",
 			url: "<?php echo base_url('Pegawai/update'); ?>",
@@ -84,7 +84,7 @@
 		const data = {
 			id : id
 		}
-		
+
 		$.ajax({
 			method: "POST",
 			url: "<?php echo base_url('Pegawai/updateNilaiKaryawan'); ?>",

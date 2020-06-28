@@ -10,13 +10,10 @@ class Kriteria extends AUTH_Controller {
 	public function index() {
 		$data['userdata'] = $this->userdata;
 		$data['dataC1'] = $this->M_kriteria->select_all('kriteria_masa_kerja');
-		$data['dataC2'] = $this->M_kriteria->select_all('kriteria_disiplin');
-		$data['dataC3'] = $this->M_kriteria->select_all('kriteria_prestasi_kerja');
-		$data['dataC4'] = $this->M_kriteria->select_all('kriteria_kerja_sama');
-		$data['dataC5'] = $this->M_kriteria->select_all('kriteria_kecakapan');
-		$data['dataC6'] = $this->M_kriteria->select_all('kriteria_loyalitas');
-		$data['dataC7'] = $this->M_kriteria->select_all('kriteria_kepemimpinan');
-		$data['dataC8'] = $this->M_kriteria->select_all('kriteria_pendidikan');
+		$data['dataC2'] = $this->M_kriteria->select_all('kriteria_absensi');
+		$data['dataC3'] = $this->M_kriteria->select_all('kriteria_target_penjualan');//target_penjualan
+		$data['dataC4'] = $this->M_kriteria->select_all('kriteria_status_kepegawaian');//status_kepegawaian
+		$data['dataC5'] = $this->M_kriteria->select_all('kriteria_pendidikan');//
 
 		$data['page'] = "kriteria";
 		$data['judul'] = "Data Kriteria";
@@ -112,7 +109,7 @@ class Kriteria extends AUTH_Controller {
 
 	public function export() {
 		error_reporting(E_ALL);
-    
+
 		include_once './assets/phpexcel/Classes/PHPExcel.php';
 		$objPHPExcel = new PHPExcel();
 

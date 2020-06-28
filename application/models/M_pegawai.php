@@ -208,23 +208,20 @@ class M_pegawai extends CI_Model {
 
 	public function select_nilai_pegawai($id="") {
 		$condition = (!empty($id)) ? "WHERE n.id = " . $id : "";
-		$sql = "SELECT n.id, k.id as id_karyawan, k.nama, c1.pilihan_kriteria as c1, c2.pilihan_kriteria as c2, c3.pilihan_kriteria as c3, c4.pilihan_kriteria as c4, c5.pilihan_kriteria as c5, c6.pilihan_kriteria as c6, c7.pilihan_kriteria as c7, c8.pilihan_kriteria as c8, 
-						c1.bobot as bobot_c1, c2.bobot as bobot_c2, c3.bobot as bobot_c3, c4.bobot as bobot_c4, c5.bobot as bobot_c5, c6.bobot as bobot_c6, c7.bobot as bobot_c7, c8.bobot as bobot_c8
+		$sql = "SELECT n.id, k.id as id_karyawan, k.nama, c1.pilihan_kriteria as c1, c2.pilihan_kriteria as c2, c3.pilihan_kriteria as c3, c4.pilihan_kriteria as c4, c5.pilihan_kriteria as c5,
+						c1.bobot as bobot_c1, c2.bobot as bobot_c2, c3.bobot as bobot_c3, c4.bobot as bobot_c4, c5.bobot as bobot_c5
 						FROM nilai n
 						LEFT JOIN karyawan k ON n.id_karyawan = k.id
 						LEFT JOIN kriteria_masa_kerja c1 ON n.c1 = c1.id
-						LEFT JOIN kriteria_disiplin c2 ON n.c2 = c2.id
-						LEFT JOIN kriteria_prestasi_kerja c3 ON n.c3 = c3.id
-						LEFT JOIN kriteria_kerja_sama c4 ON n.c4 = c4.id
-						LEFT JOIN kriteria_kecakapan c5 ON n.c5 = c5.id
-						LEFT JOIN kriteria_loyalitas c6 ON n.c6 = c6.id
-						LEFT JOIN kriteria_kepemimpinan c7 ON n.c7 = c7.id
-						LEFT JOIN kriteria_pendidikan c8 ON n.c8 = c8.id
+						LEFT JOIN kriteria_absensi c2 ON n.c2 = c2.id
+						LEFT JOIN kriteria_target_penjualan c3 ON n.c3 = c3.id
+						LEFT JOIN kriteria_status_kepegawaian c4 ON n.c4 = c4.id
+						LEFT JOIN kriteria_pendidikan c5 ON n.c5 = c5.id
 		" . $condition;
 
 		$data = $this->db->query($sql);
 
-		return $data->result();		
+		return $data->result();
 	}
 
 	public function select_nilai_karyawanold() {
@@ -234,7 +231,7 @@ class M_pegawai extends CI_Model {
 
 		$data = $this->db->query($sql);
 
-		return $data->result();		
+		return $data->result();
 	}
 
 	public function select_nilai_karyawan() {
@@ -251,19 +248,16 @@ class M_pegawai extends CI_Model {
 	public function selectNilaiRangeKaryawan($id="") {
 		$condition = (!empty($id)) ? "WHERE k.id = " . $id : "";
 
-		$sql = "SELECT n.id, k.id as id_karyawan, k.nik, k.nama, c1.pilihan_kriteria as c1, c2.pilihan_kriteria as c2, c3.pilihan_kriteria as c3, c4.pilihan_kriteria as c4, c5.pilihan_kriteria as c5, c6.pilihan_kriteria as c6, c7.pilihan_kriteria as c7, c8.pilihan_kriteria as c8, 
-						c1.bobot as bobot_c1, c2.bobot as bobot_c2, c3.bobot as bobot_c3, c4.bobot as bobot_c4, c5.bobot as bobot_c5, c6.bobot as bobot_c6, c7.bobot as bobot_c7, c8.bobot as bobot_c8, nilai_karyawan.*, c1.id as bobot_id_c1, c2.id as bobot_id_c2, c3.id as bobot_id_c3, c4.id as bobot_id_c4, c5.id as bobot_id_c5, c6.id as bobot_id_c6, c7.id as bobot_id_c7, c8.id as bobot_id_c8, n.id as nilai_id, nilai_karyawan.id as nilai_karyawan_id
+		$sql = "SELECT n.id, k.id as id_karyawan, k.nik, k.nama, c1.pilihan_kriteria as c1, c2.pilihan_kriteria as c2, c3.pilihan_kriteria as c3, c4.pilihan_kriteria as c4, c5.pilihan_kriteria as c5,
+						c1.bobot as bobot_c1, c2.bobot as bobot_c2, c3.bobot as bobot_c3, c4.bobot as bobot_c4, c5.bobot as bobot_c5, nilai_karyawan.*, c1.id as bobot_id_c1, c2.id as bobot_id_c2, c3.id as bobot_id_c3, c4.id as bobot_id_c4, c5.id as bobot_id_c5, n.id as nilai_id, nilai_karyawan.id as nilai_karyawan_id
 			FROM nilai n
 			LEFT JOIN nilai_karyawan ON n.id = nilai_karyawan.id_nilai
 			LEFT JOIN karyawan k ON n.id_karyawan = k.id
 			LEFT JOIN kriteria_masa_kerja c1 ON n.c1 = c1.id
-			LEFT JOIN kriteria_disiplin c2 ON n.c2 = c2.id
-			LEFT JOIN kriteria_prestasi_kerja c3 ON n.c3 = c3.id
-			LEFT JOIN kriteria_kerja_sama c4 ON n.c4 = c4.id
-			LEFT JOIN kriteria_kecakapan c5 ON n.c5 = c5.id
-			LEFT JOIN kriteria_loyalitas c6 ON n.c6 = c6.id
-			LEFT JOIN kriteria_kepemimpinan c7 ON n.c7 = c7.id
-			LEFT JOIN kriteria_pendidikan c8 ON n.c8 = c8.id
+			LEFT JOIN kriteria_absensi c2 ON n.c2 = c2.id
+			LEFT JOIN kriteria_target_penjualan c3 ON n.c3 = c3.id
+			LEFT JOIN kriteria_status_kepegawaian c4 ON n.c4 = c4.id
+			LEFT JOIN kriteria_pendidikan c5 ON n.c5 = c5.id
 						" . $condition;
 
 		$data = $this->db->query($sql);

@@ -12,10 +12,7 @@ class Nilai extends AUTH_Controller {
 	public function index() {
 		$data['userdata'] = $this->userdata;
 		$data['dataPegawai'] = $this->M_pegawai->select_all();
-		
-
 		$data['dataKaryawan'] = $this->M_pegawai->select_all_by('karyawan');
-		$data['dataNilaiKaryawanold'] = $this->M_pegawai->select_nilai_pegawai();
 		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_karyawan();
 		$data['dataNilaiRangeKaryawan'] = $this->M_pegawai->selectNilaiRangeKaryawan();
 
@@ -33,8 +30,6 @@ class Nilai extends AUTH_Controller {
 		$data['userdata'] = $this->userdata;
 		$data['dataPegawai'] = $this->M_pegawai->select_all();
 		$user_id = $data['userdata']->id;
-		
-
 		$data['dataKaryawan'] = $this->M_pegawai->select_all_by('karyawan');
 		$data['dataNilaiKaryawanold'] = $this->M_pegawai->select_nilai_pegawai();
 		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_karyawan();

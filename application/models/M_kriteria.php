@@ -5,7 +5,6 @@
 	 */
 	class M_kriteria extends CI_Model
 	{
-		
 		public function select_all($table)
 		{
 			$this->db->select('*');
@@ -30,9 +29,9 @@
 			$id = $dataExplode['1'];
 
 			$sql = "UPDATE $table SET pilihan_kriteria='" .$data['kriteria'] ."', bobot='" .$data['bobot'] ."' WHERE id='" .$id ."'";
-	
+
 			$this->db->query($sql);
-	
+
 			return $this->db->affected_rows();
 		}
 
