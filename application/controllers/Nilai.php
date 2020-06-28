@@ -71,9 +71,9 @@ class Nilai extends AUTH_Controller {
 		flush();
 		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_pegawai();
 		$_view = $this->load->view("laporanpenilaian/cetak_laporan", $data, true);
-		
+
 		echo $_view;
-			
+
 		$html = ob_get_contents();
 		//ob_end_clean();
 		// $mpdf->WriteHTML(utf8_encode($html));
