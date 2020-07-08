@@ -135,17 +135,14 @@ class M_pegawai extends CI_Model {
 			'C3' => $data['c3'],
 			'C4' => $data['c4'],
 			'C5' => $data['c5'],
-			'C6' => $data['c6'],
-			'C7' => $data['c7'],
-			'C8' => $data['c8'],
 		);
 
 		$this->db->insert('nilai', $nilaiPost);
-   		$insert_id = $this->db->insert_id();
+		$insert_id = $this->db->insert_id();
 
-   		if ($insert_id) {
-   			$this->insertNilaiKaryawan($insert_id, $data);
-   		}
+		if ($insert_id) {
+			$this->insertNilaiKaryawan($insert_id, $data);
+		}
 	}
 
 	public function insertNilaiKaryawan($last_id, $data) {
@@ -156,9 +153,6 @@ class M_pegawai extends CI_Model {
 			'NC3' => $data['nc3'],
 			'NC4' => $data['nc4'],
 			'NC5' => $data['nc5'],
-			'NC6' => $data['nc6'],
-			'NC7' => $data['nc7'],
-			'NC8' => $data['nc8'],
 		);
 
 		$this->db->insert('nilai_karyawan', $nilaiPost);

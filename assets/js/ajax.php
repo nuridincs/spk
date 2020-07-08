@@ -119,7 +119,6 @@
 				effect_msg();
 			}
 		})
-		
 		e.preventDefault();
 	});
 

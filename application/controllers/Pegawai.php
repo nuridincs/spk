@@ -80,9 +80,6 @@ class Pegawai extends AUTH_Controller {
 		$this->form_validation->set_rules('c3', 'C3', 'trim|required');
 		$this->form_validation->set_rules('c4', 'C4', 'trim|required');
 		$this->form_validation->set_rules('c5', 'C5', 'trim|required');
-		$this->form_validation->set_rules('c6', 'C6', 'trim|required');
-		$this->form_validation->set_rules('c7', 'C7', 'trim|required');
-		$this->form_validation->set_rules('c8', 'C8', 'trim|required');
 
 		$data = $this->input->post();
 		if ($this->form_validation->run() == TRUE) {
