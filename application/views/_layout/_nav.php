@@ -1,4 +1,4 @@
-<nav class="navbar navbar-static-top" role="navigation">
+<nav class="navbar navbar-static-top main-bg" role="navigation">
   <!-- Sidebar toggle button-->
   <a href="<?php echo base_url(); ?>assets/#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
     <span class="sr-only">Toggle navigation</span>
@@ -17,7 +17,7 @@
         </a>
         <ul class="dropdown-menu">
           <!-- The user image in the menu -->
-          <li class="user-header">
+          <li class="user-header main-bg">
             <img src="<?php echo base_url(); ?>assets/img/<?php echo $userdata->foto; ?>" class="img-circle" alt="User Image">
 
             <p>

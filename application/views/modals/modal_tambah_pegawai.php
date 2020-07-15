@@ -60,11 +60,7 @@
       </select>
     </div>
     
-    <div class="form-group">
-      <label for="">DOJ</label>
-      <input type="text" class="form-control" placeholder="DOJ" name="doj" value="<?php echo date('Y-m-d') ?>">
-    </div>
-
+    
     <div class="form-group">
       <div class="col-md-12">
         <button type="submit" class="form-control btn btn-primary"> <i class="glyphicon glyphicon-ok"></i> Tambah Data</button>

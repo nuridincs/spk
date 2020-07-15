@@ -3,8 +3,7 @@
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
   <h3 style="display:block; text-align:center;">Update Data Pegawai</h3>
       <form method="POST" id="form-update-pegawai">
-        <?php print_r($dataPegawai); ?>
-        <input type="text" name="id" value="<?php echo $dataPegawai->id; ?>">
+        <input type="hidden" name="id" value="<?php echo $dataPegawai->id; ?>">
 
         <div class="form-group">
           <label for="">Nama</label>
@@ -68,10 +67,10 @@
           </select>
         </div>
         
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="">DOJ</label>
           <input type="text" class="form-control" placeholder="DOJ" name="doj" value="<?php echo $dataPegawai->doj; ?>">
-        </div>
+        </div> -->
 
         <div class="form-group">
           <div class="col-md-12">

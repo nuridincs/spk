@@ -15,7 +15,7 @@
           <th>Nama</th>
           <th>Jabatan</th>
           <th>Departemen</th>
-          <th>Doj</th>
+         
         </tr>
       </thead>
       <tbody id="data-nilai">
@@ -27,7 +27,7 @@
             <td><?php echo $pegawai->nama; ?></td>
             <td><?php echo $pegawai->nama_jabatan; ?></td>
             <td><?php echo $pegawai->departemen; ?></td>
-            <td><?php echo $pegawai->k_doj; ?></td>
+            
           </tr>
           <?php
         }
@@ -156,10 +156,11 @@
             </tr>
             <?php
           }
+
         ?>
         <tr>
           <td colspan="2" align="center"><b>Jumlah</b></td>
-          <td><?php echo min($maxC1); ?></td>
+          <td><?php echo max($maxC1); ?></td>
           <td><?php echo max($maxC2); ?></td>
           <td><?php echo max($maxC3); ?></td>
           <td><?php echo max($maxC4); ?></td>
@@ -231,10 +232,10 @@
       <tbody id="data-nilai-pegawai">
         <?php
           $bobotC1 = 0.15;
-          $bobotC2 = 0.25;
+          $bobotC2 = 0.20;
           $bobotC3 = 0.20;
           $bobotC4 = 0.20;
-          $bobotC5 = 0.20;
+          $bobotC5 = 0.25;
           foreach ($dataNilaiRangeKaryawan as $dataNilai) {
             $hitungRankingC1 = ($dataNilai->bobot_c1 / max($maxC1)) * $bobotC1;
             $hitungRankingC2 = ($dataNilai->bobot_c2 / max($maxC2)) * $bobotC2;
@@ -275,10 +276,10 @@
           <tbody id="data-nilai-pegawai">
             <?php
               $bobotC1 = 0.15;
-              $bobotC2 = 0.25;
+              $bobotC2 = 0.20;
               $bobotC3 = 0.20;
               $bobotC4 = 0.20;
-              $bobotC5 = 0.20;
+              $bobotC5 = 0.25;
               $resultkalkulasiRangking = [];
               foreach ($dataNilaiRangeKaryawan as $dataNilai) {
                 $hitungRankingC1 = ($dataNilai->bobot_c1 / max($maxC1)) * $bobotC1;

@@ -26,7 +26,7 @@
             <td><?php echo $pegawai->nama; ?></td>
             <td><?php echo $pegawai->nama_jabatan; ?></td>
             <td><?php echo $pegawai->departemen; ?></td>
-            <td><?php echo $pegawai->k_doj; ?></td>
+          
           </tr>
           <?php
         }

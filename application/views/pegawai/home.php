@@ -16,7 +16,6 @@
           <th>Nama</th>
           <th>Jabatan</th>
           <th>Departemen</th>
-          <th style="width:100px">DOJ</th>
           <th style="text-align: center;">Aksi</th>
         </tr>
       </thead>

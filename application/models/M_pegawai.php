@@ -11,7 +11,7 @@ class M_pegawai extends CI_Model {
 	}
 
 	public function select_all() {
-		$sql = "SELECT karyawan.*, posisi.nama AS departemen, DATE_FORMAT(karyawan.doj,'%d %b %Y') as k_doj, jabatan.*
+		$sql = "SELECT karyawan.*, posisi.nama AS departemen, DATE_FORMAT(karyawan.doj,'%d %b %Y') as k_doj, jabatan.*, karyawan.id as id_karyawan
 				FROM karyawan
 				INNER JOIN posisi ON posisi.id = karyawan.id_posisi
 				INNER JOIN jabatan ON jabatan.id = karyawan.jabatan
@@ -47,7 +47,7 @@ class M_pegawai extends CI_Model {
 	}
 
 	public function update($data) {
-		$sql = "UPDATE karyawan SET nik='" .$data['nik'] ."', nama='" .$data['nama'] ."', id_posisi='" .$data['posisi'] ."', jabatan='" .$data['jabatan'] ."', level='" .$data['level'] ."', doj='" .$data['doj'] ."' WHERE id='" .$data['id'] ."'";
+		$sql = "UPDATE karyawan SET nik='" .$data['nik'] ."', nama='" .$data['nama'] ."', id_posisi='" .$data['posisi'] ."', jabatan='" .$data['jabatan'] ."', level='" .$data['level'] ."' WHERE id='" .$data['id'] ."'";
 
 		$this->db->query($sql);
 
@@ -73,7 +73,7 @@ class M_pegawai extends CI_Model {
 		// $month = date('m');
 		// $date = date('d');
 		// $id = $code_toko.$month.$date.$squence[0]->id;
-		$sql = "INSERT INTO karyawan(nama,nik,id_posisi,jabatan,level,doj) VALUES('" .$data['nama'] ."','" .$data['nik'] ."','" .$data['posisi'] ."','" .$data['jabatan'] ."','" .$data['level'] ."','" .$data['doj'] ."')";
+		$sql = "INSERT INTO karyawan(nama,nik,id_posisi,jabatan,level) VALUES('" .$data['nama'] ."','" .$data['nik'] ."','" .$data['posisi'] ."','" .$data['jabatan'] ."','" .$data['level'] ."')";
 
 		$this->db->query($sql);
 

@@ -14,10 +14,10 @@
   }
 
   $bobotC1 = 0.15;
-  $bobotC2 = 0.25;
+  $bobotC2 = 0.20;
   $bobotC3 = 0.20;
   $bobotC4 = 0.20;
-  $bobotC5 = 0.20;
+  $bobotC5 = 0.25;
   $resultkalkulasiRangking = [];
   $nilaiGroup = [];
   foreach ($dataNilaiKaryawan as $dataNilai) {
@@ -85,10 +85,10 @@
     "Rangking yang lolos adalah <b>Ranking1</b>"
   </p>
   <div style="text-align: center;line-height: 35px;">TTD</div>
-  <table border=1 width="50%" align="center" cellpadding="10">
+  <table border=1 width="40%" align="center" cellpadding="10">
       <tr align="center">
-        <td>HR</td>
-        <td>GM</td>
+           <td>HR</td>
+        <td>Mgr</td>
       </tr>
       <tr>
         <td rowspan="4">&nbsp;&nbsp;&nbsp;</td>

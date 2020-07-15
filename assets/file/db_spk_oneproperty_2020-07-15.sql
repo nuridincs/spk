@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.27)
 # Database: db_spk_oneproperty
-# Generation Time: 2020-06-28 17:09:16 +0000
+# Generation Time: 2020-07-15 04:39:37 +0000
 # ************************************************************
 
 
@@ -41,7 +41,7 @@ LOCK TABLES `admin` WRITE;
 INSERT INTO `admin` (`id`, `username`, `password`, `nama`, `role`, `foto`)
 VALUES
 	(1,'admin','21232f297a57a5a743894a0e4a801fc3','admin','admin','profil1.jpg'),
-	(2,'adminGM','21232f297a57a5a743894a0e4a801fc3','gm','supervisor','profil2.jpg');
+	(2,'manager','21232f297a57a5a743894a0e4a801fc3','Manager','supervisor','profil2.jpg');
 
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -64,12 +64,10 @@ LOCK TABLES `jabatan` WRITE;
 
 INSERT INTO `jabatan` (`id`, `nama_jabatan`, `level`)
 VALUES
-	(1,'Staff Kontrak',1),
-	(2,'Staff Permanen',2),
-	(3,'Senior Staff',3),
-	(4,'Section Head',4),
-	(5,'Divisi Manager',5),
-	(6,'Store GM',6);
+	(1,'kartap',1),
+	(2,'kontrak ',2),
+	(3,'percobaan',3),
+	(4,'magang',4);
 
 /*!40000 ALTER TABLE `jabatan` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -89,7 +87,7 @@ CREATE TABLE `karyawan` (
   `id_posisi` int(11) DEFAULT NULL,
   `status` int(1) DEFAULT '1',
   `foto` varchar(255) DEFAULT 'profil1.jpg',
-  `doj` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `doj` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `jabatan` (`jabatan`),
   KEY `level` (`level`),
@@ -102,10 +100,10 @@ LOCK TABLES `karyawan` WRITE;
 
 INSERT INTO `karyawan` (`id`, `nik`, `nama`, `jabatan`, `level`, `id_posisi`, `status`, `foto`, `doj`)
 VALUES
-	(2,'11000001','Dodi Hermawan',1,4,3,1,'profil1.jpg','2020-01-22 21:26:27'),
-	(3,'11000002','Tegar Pribianto',2,1,1,1,'profil1.jpg','2020-01-22 21:26:27'),
-	(4,'11000003','Fitria dwi',3,1,1,1,'profil1.jpg','2020-01-22 21:26:27'),
-	(5,'11000004','Marina Purwa',4,4,6,1,'profil1.jpg','2020-01-22 21:26:27');
+	(2,'11000001','Marina',1,1,1,1,'profil1.jpg','0000-00-00 00:00:00'),
+	(3,'11000002','Dodi ',2,2,1,1,'profil1.jpg','2020-07-02 00:00:00'),
+	(4,'11000003','Tegar',3,3,1,1,'profil1.jpg','2020-07-02 00:00:00'),
+	(5,'11000004','Fitria',2,2,1,1,'profil1.jpg','2020-07-02 00:00:00');
 
 /*!40000 ALTER TABLE `karyawan` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -129,38 +127,12 @@ LOCK TABLES `kriteria_absensi` WRITE;
 
 INSERT INTO `kriteria_absensi` (`id`, `pilihan_kriteria`, `range`, `bobot`)
 VALUES
-	(1,'9 - 10','9 - 10',1),
-	(2,'7.1 - 8.9','7.1 - 8.9',0.75),
-	(3,'5.1 - 7','5.1 - 7',0.5),
-	(4,'< 5','< 5',0.25);
+	(1,'sangat baik','<5',1),
+	(2,'baik','5.1 - 7',0.75),
+	(3,'cukup baik','7.1-9',0.5),
+	(4,'kurang baik','>10',0.25);
 
 /*!40000 ALTER TABLE `kriteria_absensi` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table kriteria_status_kepegawaian
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `kriteria_status_kepegawaian`;
-
-CREATE TABLE `kriteria_status_kepegawaian` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `pilihan_kriteria` varchar(50) DEFAULT NULL,
-  `bobot` double DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `kriteria_status_kepegawaian` WRITE;
-/*!40000 ALTER TABLE `kriteria_status_kepegawaian` DISABLE KEYS */;
-
-INSERT INTO `kriteria_status_kepegawaian` (`id`, `pilihan_kriteria`, `bobot`)
-VALUES
-	(1,'9 - 10',1),
-	(2,'7.1 - 8.9',0.75),
-	(3,'5.1 - 7',0.5),
-	(4,'< 5',0.25);
-
-/*!40000 ALTER TABLE `kriteria_status_kepegawaian` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -181,10 +153,10 @@ LOCK TABLES `kriteria_masa_kerja` WRITE;
 
 INSERT INTO `kriteria_masa_kerja` (`id`, `pilihan_kriteria`, `bobot`)
 VALUES
-	(1,'> 3 Tahun',0.8),
-	(2,'< 3 Tahun',0.6),
-	(3,'< 2 Tahun',0.4),
-	(4,'< 1 Tahun',0.2);
+	(2,'> 4 Tahun',1),
+	(3,'< 3 Tahun',0.75),
+	(4,'< 2 Tahun',0.5),
+	(5,'< 1 Tahun',0.25);
 
 /*!40000 ALTER TABLE `kriteria_masa_kerja` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -217,6 +189,32 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table kriteria_status_kepegawaian
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `kriteria_status_kepegawaian`;
+
+CREATE TABLE `kriteria_status_kepegawaian` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pilihan_kriteria` varchar(50) DEFAULT NULL,
+  `bobot` double DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `kriteria_status_kepegawaian` WRITE;
+/*!40000 ALTER TABLE `kriteria_status_kepegawaian` DISABLE KEYS */;
+
+INSERT INTO `kriteria_status_kepegawaian` (`id`, `pilihan_kriteria`, `bobot`)
+VALUES
+	(1,'tetap',1),
+	(2,'kontrak',0.75),
+	(3,'percobaan',0.5),
+	(4,'magang',0.25);
+
+/*!40000 ALTER TABLE `kriteria_status_kepegawaian` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Dump of table kriteria_target_penjualan
 # ------------------------------------------------------------
 
@@ -234,10 +232,10 @@ LOCK TABLES `kriteria_target_penjualan` WRITE;
 
 INSERT INTO `kriteria_target_penjualan` (`id`, `pilihan_kriteria`, `bobot`)
 VALUES
-	(1,'3,5 - 5',1),
-	(2,'3,0 - 3,4',0.75),
-	(3,'2,1 - 2,9',0.5),
-	(4,'1.0 - 2.0',0.25);
+	(1,'>10',1),
+	(2,'7.1-9',0.75),
+	(3,'5.1-7',0.5),
+	(4,'<5',0.25);
 
 /*!40000 ALTER TABLE `kriteria_target_penjualan` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -276,10 +274,10 @@ LOCK TABLES `nilai` WRITE;
 
 INSERT INTO `nilai` (`id`, `id_karyawan`, `C1`, `C2`, `C3`, `C4`, `C5`)
 VALUES
-	(16,3,1,2,3,2,2),
-	(17,4,1,2,3,2,4),
-	(18,5,1,2,2,2,4),
-	(19,2,1,2,2,3,2);
+	(21,3,3,3,4,2,4),
+	(22,4,4,2,2,3,3),
+	(23,5,2,2,2,2,2),
+	(24,2,3,1,2,1,2);
 
 /*!40000 ALTER TABLE `nilai` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -296,7 +294,7 @@ CREATE TABLE `nilai_karyawan` (
   `NC1` float DEFAULT NULL,
   `NC2` int(4) DEFAULT NULL,
   `NC3` float DEFAULT NULL,
-  `NC4` int(4) DEFAULT NULL,
+  `NC4` char(20) DEFAULT NULL,
   `NC5` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `nilai` (`id_nilai`),
@@ -308,10 +306,10 @@ LOCK TABLES `nilai_karyawan` WRITE;
 
 INSERT INTO `nilai_karyawan` (`id`, `id_nilai`, `NC1`, `NC2`, `NC3`, `NC4`, `NC5`)
 VALUES
-	(2,16,3,9,7,9,'S1'),
-	(3,17,3,8,6,8,'SMA/K Sederajat'),
-	(4,18,4,9,8,9,'SMA/K Sederajat'),
-	(5,19,3,9,8,7,'S1');
+	(7,21,3,8,4,'kontrak','sma/k'),
+	(8,22,2,6,8,'percobaan','D3'),
+	(9,23,3.5,6,8,'kontrak','s1'),
+	(10,24,3,4,8,'kartap','s1');
 
 /*!40000 ALTER TABLE `nilai_karyawan` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -333,14 +331,9 @@ LOCK TABLES `posisi` WRITE;
 
 INSERT INTO `posisi` (`id`, `nama`)
 VALUES
-	(1,'Kasir & CIS'),
-	(2,'Finance'),
-	(3,'Good Receiving'),
-	(4,'Food & Non Food'),
-	(5,'Facility'),
-	(6,'Alc &  Vm'),
-	(7,'Quality Control'),
-	(8,'HR');
+	(1,' marketing'),
+	(2,'manager'),
+	(3,'HR');
 
 /*!40000 ALTER TABLE `posisi` ENABLE KEYS */;
 UNLOCK TABLES;

@@ -1,6 +1,6 @@
-<aside class="main-sidebar">
+<aside class="main-sidebar main-bg">
   <!-- sidebar: style can be found in sidebar.less -->
-  <section class="sidebar">
+  <section class="sidebar main-bg">
 
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel">
@@ -15,7 +15,7 @@
     </div>
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu">
-      <li class="header">LIST MENU</li>
+      <!-- <li class="header">LIST MENU</li> -->
       <!-- Optionally, you can add icons to the links -->
 
       <?php 

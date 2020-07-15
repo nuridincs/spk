@@ -183,10 +183,10 @@
 
 <?php
   $bobotC1 = 0.15;
-  $bobotC2 = 0.25;
+  $bobotC2 = 0.20;
   $bobotC3 = 0.20;
   $bobotC4 = 0.20;
-  $bobotC5 = 0.20;
+  $bobotC5 = 0.25;
   $resultkalkulasiRangking = [];
   $nilaiGroup = [];
   foreach ($dataNilaiKaryawan as $dataNilai) {

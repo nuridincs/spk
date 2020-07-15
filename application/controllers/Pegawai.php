@@ -52,7 +52,7 @@ class Pegawai extends AUTH_Controller {
 		$this->form_validation->set_rules('posisi', 'Posisi', 'trim|required');
 		$this->form_validation->set_rules('jabatan', 'Jabatan', 'trim|required');
 		$this->form_validation->set_rules('level', 'Level', 'trim|required');
-		$this->form_validation->set_rules('doj', 'Doj', 'trim|required');
+		
 
 		$data = $this->input->post();
 		if ($this->form_validation->run() == TRUE) {
@@ -151,6 +151,8 @@ class Pegawai extends AUTH_Controller {
 		$data['dataJabatan'] = $this->M_pegawai->fetchData('jabatan');
 		$data['dataLevel'] = $this->M_pegawai->fetchData('jabatan');
 		$data['userdata'] = $this->userdata;
+		// echo "<pre>";
+		// print_r($data);die;
 
 		echo show_my_modal('modals/modal_update_pegawai', 'update-pegawai', $data);
 	}
@@ -173,7 +175,6 @@ class Pegawai extends AUTH_Controller {
 		$this->form_validation->set_rules('posisi', 'Posisi', 'trim|required');
 		$this->form_validation->set_rules('jabatan', 'Jabatan', 'trim|required');
 		$this->form_validation->set_rules('level', 'Level', 'trim|required');
-		$this->form_validation->set_rules('doj', 'Doj', 'trim|required');
 
 		$data = $this->input->post();
 		if ($this->form_validation->run() == TRUE) {
