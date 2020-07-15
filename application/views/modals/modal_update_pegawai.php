@@ -50,23 +50,7 @@
           }
           ?>
         </select>
-        </div>
 
-        <div class="form-group">
-          <label for="">Level</label>
-          <select name="level" class="form-control" style="width: 100%">
-            <?php
-            for($lvl = 1; $lvl <= 4; $lvl++) {
-              ?>
-              <option value="<?php echo $lvl; ?>" <?php if($lvl == $dataPegawai->level){ echo "selected='selected'";} ?>>
-                <?php echo $lvl; ?>
-              </option>
-              <?php
-            }
-            ?>
-          </select>
-        </div>
-        
         <!-- <div class="form-group">
           <label for="">DOJ</label>
           <input type="text" class="form-control" placeholder="DOJ" name="doj" value="<?php echo $dataPegawai->doj; ?>">

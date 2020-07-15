@@ -47,7 +47,7 @@ class M_pegawai extends CI_Model {
 	}
 
 	public function update($data) {
-		$sql = "UPDATE karyawan SET nik='" .$data['nik'] ."', nama='" .$data['nama'] ."', id_posisi='" .$data['posisi'] ."', jabatan='" .$data['jabatan'] ."', level='" .$data['level'] ."' WHERE id='" .$data['id'] ."'";
+		$sql = "UPDATE karyawan SET nik='" .$data['nik'] ."', nama='" .$data['nama'] ."', id_posisi='" .$data['posisi'] ."', jabatan='" .$data['jabatan'] ."' WHERE id='" .$data['id'] ."'";
 
 		$this->db->query($sql);
 
@@ -73,7 +73,7 @@ class M_pegawai extends CI_Model {
 		// $month = date('m');
 		// $date = date('d');
 		// $id = $code_toko.$month.$date.$squence[0]->id;
-		$sql = "INSERT INTO karyawan(nama,nik,id_posisi,jabatan,level) VALUES('" .$data['nama'] ."','" .$data['nik'] ."','" .$data['posisi'] ."','" .$data['jabatan'] ."','" .$data['level'] ."')";
+		$sql = "INSERT INTO karyawan(nama,nik,id_posisi,jabatan) VALUES('" .$data['nama'] ."','" .$data['nik'] ."','" .$data['posisi'] ."','" .$data['jabatan'] ."')";
 
 		$this->db->query($sql);
 
@@ -173,9 +173,6 @@ class M_pegawai extends CI_Model {
 			'C3' => $data['c3'],
 			'C4' => $data['c4'],
 			'C5' => $data['c5'],
-			'C6' => $data['c6'],
-			'C7' => $data['c7'],
-			'C8' => $data['c8'],
 		);
 		$this->db->where('id', $data['id_nilai']);
 		$this->db->update('nilai', $nilaiPost);
@@ -191,9 +188,6 @@ class M_pegawai extends CI_Model {
 			'NC3' => $data['nc3'],
 			'NC4' => $data['nc4'],
 			'NC5' => $data['nc5'],
-			'NC6' => $data['nc6'],
-			'NC7' => $data['nc7'],
-			'NC8' => $data['nc8'],
 		);
 
 		$this->db->where('id', $data['id_nilai_karyawan']);

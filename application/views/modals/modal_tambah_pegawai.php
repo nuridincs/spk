@@ -46,22 +46,6 @@
     </div>
 
     <div class="form-group">
-      <label for="">Level</label>
-      <select name="level" class="form-control" style="width: 100%">
-        <?php
-        foreach ($level as $level) {
-          ?>
-          <option value="<?php echo $level->id; ?>">
-            <?php echo $level->level; ?>
-          </option>
-          <?php
-        }
-        ?>
-      </select>
-    </div>
-    
-    
-    <div class="form-group">
       <div class="col-md-12">
         <button type="submit" class="form-control btn btn-primary"> <i class="glyphicon glyphicon-ok"></i> Tambah Data</button>
       </div>
