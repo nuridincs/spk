@@ -6,7 +6,7 @@ class Auth extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_auth');
 	}
-	
+
 	public function index() {
 		$session = $this->session->userdata('status');
 

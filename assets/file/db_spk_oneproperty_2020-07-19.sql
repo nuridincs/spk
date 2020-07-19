@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.27)
 # Database: db_spk_oneproperty
-# Generation Time: 2020-07-15 04:39:37 +0000
+# Generation Time: 2020-07-19 05:37:37 +0000
 # ************************************************************
 
 
@@ -40,8 +40,10 @@ LOCK TABLES `admin` WRITE;
 
 INSERT INTO `admin` (`id`, `username`, `password`, `nama`, `role`, `foto`)
 VALUES
-	(1,'admin','21232f297a57a5a743894a0e4a801fc3','admin','admin','profil1.jpg'),
-	(2,'manager','21232f297a57a5a743894a0e4a801fc3','Manager','supervisor','profil2.jpg');
+	(1,'adminold','202cb962ac59075b964b07152d234b70','admin','admin','profil1.jpg'),
+	(2,'manager','202cb962ac59075b964b07152d234b70','Manager','manager','profil1.jpg'),
+	(3,'leader','202cb962ac59075b964b07152d234b70','Leader','leader','profil1.jpg'),
+	(4,'admin_hr','202cb962ac59075b964b07152d234b70','HR','admin','profil1.jpg');
 
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -153,7 +155,7 @@ LOCK TABLES `kriteria_masa_kerja` WRITE;
 
 INSERT INTO `kriteria_masa_kerja` (`id`, `pilihan_kriteria`, `bobot`)
 VALUES
-	(2,'> 4 Tahun',1),
+	(2,'> 3 Tahun',1),
 	(3,'< 3 Tahun',0.75),
 	(4,'< 2 Tahun',0.5),
 	(5,'< 1 Tahun',0.25);
@@ -274,10 +276,10 @@ LOCK TABLES `nilai` WRITE;
 
 INSERT INTO `nilai` (`id`, `id_karyawan`, `C1`, `C2`, `C3`, `C4`, `C5`)
 VALUES
-	(21,3,3,3,4,2,4),
-	(22,4,4,2,2,3,3),
-	(23,5,2,2,2,2,2),
-	(24,2,3,1,2,1,2);
+	(27,4,4,2,2,3,3),
+	(28,5,2,2,2,2,2),
+	(29,2,3,1,2,1,2),
+	(30,3,3,3,4,2,4);
 
 /*!40000 ALTER TABLE `nilai` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -306,10 +308,10 @@ LOCK TABLES `nilai_karyawan` WRITE;
 
 INSERT INTO `nilai_karyawan` (`id`, `id_nilai`, `NC1`, `NC2`, `NC3`, `NC4`, `NC5`)
 VALUES
-	(7,21,3,8,4,'kontrak','sma/k'),
-	(8,22,2,6,8,'percobaan','D3'),
-	(9,23,3.5,6,8,'kontrak','s1'),
-	(10,24,3,4,8,'kartap','s1');
+	(13,27,2,6,8,'percobaan','D3'),
+	(14,28,3.5,6,8,'kontrak','s1'),
+	(15,29,3,4,8,'tetap','s1'),
+	(16,30,3,8,4,'kontrak','sma/k sederajat');
 
 /*!40000 ALTER TABLE `nilai_karyawan` ENABLE KEYS */;
 UNLOCK TABLES;

@@ -18,8 +18,10 @@
       <!-- <li class="header">LIST MENU</li> -->
       <!-- Optionally, you can add icons to the links -->
 
-      <?php 
-        if (!empty($userdata->role) && $userdata->role == 'admin') {
+      <?php
+        $role = ['manager', 'admin', 'leader'];
+        if(in_array($userdata->role, $role)) {
+        // if (!empty($userdata->role) && $userdata->role == 'admin') {
       ?>
         <li <?php if ($page == 'home') {echo 'class="active"';} ?>>
           <a href="<?php echo base_url('Home'); ?>">
@@ -28,13 +30,18 @@
           </a>
         </li>
 
-        <li <?php if ($page == 'kriteria') {echo 'class="active"';} ?>>
+        <?php
+          $role = ['manager', 'admin'];
+          if(in_array($userdata->role, $role)):
+        ?>
+
+        <li <?php if ($page == 'kriteria') { echo 'class="active"'; } ?>>
           <a href="<?php echo base_url('Kriteria'); ?>">
             <i class="fa fa-list"></i>
             <span>Kriteria</span>
           </a>
         </li>
-        
+          <?php endif; ?>
         <li <?php if ($page == 'pegawai') {echo 'class="active"';} ?>>
           <a href="<?php echo base_url('Pegawai'); ?>">
             <i class="fa fa-user"></i>
@@ -88,7 +95,7 @@
           </a>
         </li>
         <li <?php if ($page == 'nilai') {echo 'class="active"';} ?>>
-          <a href="<?php echo base_url('Nilai/karyawan'); ?>">
+          <a href="<?php echo base_url('Nilai'); ?>">
             <i class="fa fa-file"></i>
             <span>Nilai</span>
           </a>
@@ -103,7 +110,7 @@
           <span>Data Posisi</span>
         </a>
       </li>
-      
+
       <li <?php // if ($page == 'kota') {echo 'class="active"';} ?>>
         <a href="<?php // echo base_url('Kota'); ?>">
           <i class="fa fa-location-arrow"></i>
