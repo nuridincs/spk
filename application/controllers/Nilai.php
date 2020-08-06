@@ -45,6 +45,59 @@ class Nilai extends AUTH_Controller {
 		$this->template->views('Nilai/nilai_by_karyawan', $data);
 	}
 
+	public function cetakLaporan()
+	{
+		$this->load->library('Pdf');
+
+		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_pegawai();
+
+		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+		// document informasi
+		$pdf->SetCreator('Property Rumah');
+		$pdf->SetTitle('Laporan');
+		$pdf->SetSubject('Laporan');
+
+		//header Data
+		// $PDF_HEADER_LOGO = "logo-dpl.png";
+		// $PDF_HEADER_LOGO_WIDTH = "20";
+		// $PDF_HEADER_TITLE = "PT. DUTA PUTRA LAND";
+		// $PDF_HEADER_STRING = "Tel 1234567896 Fax 987654321\n"
+		// . "pt_dutaputraland@gmail.com\n"
+		// . "www.pdl.com";
+		// $pdf->SetHeaderData($PDF_HEADER_LOGO, $PDF_HEADER_LOGO_WIDTH, $PDF_HEADER_TITLE, $PDF_HEADER_STRING);
+		// $pdf->SetFooterData(array(255, 255, 255), array(255, 255, 255));
+
+
+		// $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN,'',PDF_FONT_SIZE_MAIN));
+    // $pdf->setFooterFont(Array(PDF_FONT_NAME_MAIN,'',PDF_FONT_SIZE_MAIN));
+
+    // $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+    //set margin
+    // $pdf->SetMargins(PDF_MARGIN_LEFT,PDF_MARGIN_TOP + 10,PDF_MARGIN_RIGHT);
+    // $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+    // $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+    // $pdf->SetAutoPageBreak(FALSE, PDF_MARGIN_BOTTOM - 5);
+
+    //SET Scaling ImagickPixel
+    $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+    //FONT Subsetting
+    $pdf->setFontSubsetting(true);
+
+    $pdf->SetFont('helvetica','',14,'',true);
+
+    $pdf->AddPage('L');
+
+		$_view = $this->load->view("laporanpenilaian/cetak_laporan", $data, true);
+
+		$pdf->writeHTMLCell(0, 0, '', '', $_view, 0, 0, 0, true, '', true);
+
+		$pdf->Output('report.pdf', 'I');
+	}
+
 	public function laporanPenilaian() {
 		$data['userdata'] = $this->userdata;
 		$data['dataPegawai'] = $this->M_pegawai->select_all();
@@ -61,7 +114,7 @@ class Nilai extends AUTH_Controller {
 		$this->template->views('laporanpenilaian/home', $data);
 	}
 
-	public function cetakLaporan() {
+	public function cetakLaporanOld() {
 		$this->load->library('m_pdf');
 		error_reporting(E_ALL);
 		$nama_dokumen='PDF';

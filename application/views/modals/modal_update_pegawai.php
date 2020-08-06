@@ -51,10 +51,21 @@
           ?>
         </select>
 
-        <!-- <div class="form-group">
-          <label for="">DOJ</label>
-          <input type="text" class="form-control" placeholder="DOJ" name="doj" value="<?php echo $dataPegawai->doj; ?>">
-        </div> -->
+        <div class="form-group">
+          <label for="">Tanggal Periode</label>
+          <input type="text" class="form-control" placeholder="Tanggal Periode" id="datepicker2" value="<?php echo $dataPegawai->tgl_periode; ?>" name="tgl_periode" required>
+        </div>
+
+        <div class="form-group">
+          <label for="">Target Penjualan</label>
+          <div class="input-group date">
+            <input type="number" class="form-control" placeholder="Target Penjualan" name="target_penjualan" value="<?php echo $dataPegawai->target_penjualan; ?>" required>
+
+            <div class="input-group-addon">
+              %
+            </div>
+          </div>
+        </div>
 
         <div class="form-group">
           <div class="col-md-12">
@@ -67,6 +78,12 @@
 <script type="text/javascript">
 $(function () {
     $(".select2").select2();
+
+    $('#datepicker2').datepicker({
+      format: 'yyyy-mm-dd',
+      todayHighlight:'TRUE',
+      autoclose: true,
+    });
 
     $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
       checkboxClass: 'icheckbox_flat-blue',

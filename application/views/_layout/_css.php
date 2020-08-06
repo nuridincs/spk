@@ -7,3 +7,5 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/iCheck/all.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
+
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/datepicker.min.css">

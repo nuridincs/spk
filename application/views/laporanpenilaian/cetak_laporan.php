@@ -33,6 +33,7 @@
     $nilaiGroup[] = array(
       'id' => $dataNilai->id_karyawan,
       'nama' => $dataNilai->nama,
+      'tgl_periode' => $dataNilai->tgl_periode,
       'nilai' => number_format(round($kalkulasiRangking, 2), 2)
     );
   }
@@ -40,11 +41,12 @@
 
 <div>
   <h1 align="center">Laporan Penilaian</h1>
-  <table border=1 class="table table-bordered table-striped" width="100%">
+  <table border="1" class="table table-bordered table-striped" width="100%">
     <thead>
-      <tr>
+      <tr align="center">
         <th>Nik</th>
         <th>Nama</th>
+        <th>Tgl. Periode</th>
         <th>Nilai</th>
         <th>Ranking</th>
       </tr>
@@ -69,9 +71,10 @@
               $color = "style='background-color: #3c8dbc; color: white; font-weight: bold;opacity: 0.5;'";
             }
           ?>
-          <tr>
+          <tr align="center">
             <td><?php echo $value['id']; ?></td>
             <td><?php echo $value['nama']; ?></td>
+            <td><?php echo date('d-m-Y', strtotime($value['tgl_periode'])); ?></td>
             <td><?php echo $value['nilai']; ?></td>
             <td <?php echo $color ?> ><?php echo $value['rank']; ?></td>
           </tr>
@@ -84,10 +87,10 @@
     <h4>Kesimpulan</h4>
     "Rangking yang lolos adalah <b>Ranking1</b>"
   </p>
-  <div style="text-align: center;line-height: 35px;">TTD</div>
-  <table border=1 width="40%" align="center" cellpadding="10">
+  <div style="line-height: 35px;">TTD</div>
+  <table border="1" width="40%" cellpadding="10">
       <tr align="center">
-           <td>HR</td>
+          <td>HR</td>
         <td>Mgr</td>
       </tr>
       <tr>

@@ -47,7 +47,7 @@ class M_pegawai extends CI_Model {
 	}
 
 	public function update($data) {
-		$sql = "UPDATE karyawan SET nik='" .$data['nik'] ."', nama='" .$data['nama'] ."', id_posisi='" .$data['posisi'] ."', jabatan='" .$data['jabatan'] ."' WHERE id='" .$data['id'] ."'";
+		$sql = "UPDATE karyawan SET nik='" .$data['nik'] ."', nama='" .$data['nama'] ."', id_posisi='" .$data['posisi'] ."', jabatan='" .$data['jabatan'] ."', tgl_periode='" .$data['tgl_periode'] ."', target_penjualan='" .$data['target_penjualan'] ."' WHERE id='" .$data['id'] ."'";
 
 		$this->db->query($sql);
 
@@ -67,13 +67,7 @@ class M_pegawai extends CI_Model {
 	}
 
 	public function insert($data) {
-		// $insertSquenec = $this->execute('insert', 'squence');
-		// $squence = $this->getData('squence');
-		// $code_toko = 11;
-		// $month = date('m');
-		// $date = date('d');
-		// $id = $code_toko.$month.$date.$squence[0]->id;
-		$sql = "INSERT INTO karyawan(nama,nik,id_posisi,jabatan) VALUES('" .$data['nama'] ."','" .$data['nik'] ."','" .$data['posisi'] ."','" .$data['jabatan'] ."')";
+		$sql = "INSERT INTO karyawan(nama,nik,id_posisi,jabatan,tgl_periode,target_penjualan) VALUES('" .$data['nama'] ."','" .$data['nik'] ."','" .$data['posisi'] ."','" .$data['jabatan'] ."','" .$data['tgl_periode'] ."','" .$data['target_penjualan'] ."')";
 
 		$this->db->query($sql);
 
@@ -121,6 +115,14 @@ class M_pegawai extends CI_Model {
 
 	public function select_all_by($table) {
 		$sql = "SELECT * FROM $table";
+
+		$data = $this->db->query($sql);
+
+		return $data->result();
+	}
+
+	public function getKaryawan() {
+		$sql = "SELECT * FROM karyawan WHERE target_penjualan >= 70";
 
 		$data = $this->db->query($sql);
 
@@ -196,7 +198,7 @@ class M_pegawai extends CI_Model {
 
 	public function select_nilai_pegawai($id="") {
 		$condition = (!empty($id)) ? "WHERE n.id = " . $id : "";
-		$sql = "SELECT n.id, k.id as id_karyawan, k.nama, c1.pilihan_kriteria as c1, c2.pilihan_kriteria as c2, c3.pilihan_kriteria as c3, c4.pilihan_kriteria as c4, c5.pilihan_kriteria as c5,
+		$sql = "SELECT n.id, k.id as id_karyawan, k.nama, k.tgl_periode, k.target_penjualan, c1.pilihan_kriteria as c1, c2.pilihan_kriteria as c2, c3.pilihan_kriteria as c3, c4.pilihan_kriteria as c4, c5.pilihan_kriteria as c5,
 						c1.bobot as bobot_c1, c2.bobot as bobot_c2, c3.bobot as bobot_c3, c4.bobot as bobot_c4, c5.bobot as bobot_c5
 						FROM nilai n
 						LEFT JOIN karyawan k ON n.id_karyawan = k.id
@@ -213,7 +215,7 @@ class M_pegawai extends CI_Model {
 	}
 
 	public function select_nilai_karyawanold() {
-		$sql = "SELECT nilai_karyawan.* , karyawan.nik, karyawan.nama
+		$sql = "SELECT nilai_karyawan.* , karyawan.nik, karyawan.nama, karyawan.tgl_periode, karyawan.target_penjualan
 				FROM nilai_karyawan
 				INNER JOIN karyawan ON karyawan.id = nilai_karyawan.id_karyawan";
 
@@ -223,7 +225,7 @@ class M_pegawai extends CI_Model {
 	}
 
 	public function select_nilai_karyawan() {
-		$sql = "SELECT nilai_karyawan.* , karyawan.nik, karyawan.nama, karyawan.id as id_karyawan
+		$sql = "SELECT nilai_karyawan.* , karyawan.nik, karyawan.nama, karyawan.id as id_karyawan, karyawan.tgl_periode, karyawan.target_penjualan
 					FROM nilai_karyawan
 					INNER JOIN nilai ON nilai.id = nilai_karyawan.id_nilai
 					INNER JOIN karyawan ON karyawan.id = nilai.id_karyawan

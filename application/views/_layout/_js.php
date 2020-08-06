@@ -1,4 +1,5 @@
 <!-- REQUIRED JS SCRIPTS -->
+
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/select2/select2.full.min.js"></script>
@@ -10,3 +11,5 @@
 
 <!-- My Ajax -->
 <?php include './assets/js/ajax.php'; ?>
+
+<script src="<?php echo base_url(); ?>assets/dist/js/datepicker.min.js"></script>

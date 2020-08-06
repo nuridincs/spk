@@ -28,7 +28,7 @@
         ?>
       </select>
     </div>
-    
+
     <div class="form-group">
       <label for="">Jabatan</label>
       <!-- <input type="text" class="form-control" placeholder="Jabatan" name="jabatan"> -->
@@ -46,6 +46,22 @@
     </div>
 
     <div class="form-group">
+      <label for="">Tanggal Periode</label>
+      <input type="text" class="form-control" placeholder="Tanggal Periode" id="datepicker" name="tgl_periode" required>
+    </div>
+
+    <div class="form-group">
+      <label for="">Target Penjualan</label>
+      <div class="input-group date">
+        <input type="number" class="form-control" placeholder="Target Penjualan" name="target_penjualan" required>
+
+        <div class="input-group-addon">
+          %
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
       <div class="col-md-12">
         <button type="submit" class="form-control btn btn-primary"> <i class="glyphicon glyphicon-ok"></i> Tambah Data</button>
       </div>
@@ -56,11 +72,19 @@
 
 <script type="text/javascript">
 $(function () {
-    $(".select2").select2();
+  $(".select2").select2();
 
-    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-      checkboxClass: 'icheckbox_flat-blue',
-      radioClass: 'iradio_flat-blue'
-    });
+  // $("#datepicker").datepicker();
+
+  $('#datepicker').datepicker({
+    format: 'yyyy-mm-dd',
+    todayHighlight:'TRUE',
+    autoclose: true,
+  });
+
+  $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+    checkboxClass: 'icheckbox_flat-blue',
+    radioClass: 'iradio_flat-blue'
+  });
 });
 </script>

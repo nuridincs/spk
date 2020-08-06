@@ -15,7 +15,7 @@ class Pegawai extends AUTH_Controller {
 		$data['dataPegawai'] = $this->M_pegawai->select_all();
 		$data['dataPosisi'] = $this->M_posisi->select_all();
 
-		$data['dataKaryawan'] = $this->M_pegawai->select_all_by('karyawan');
+		$data['dataKaryawan'] = $this->M_pegawai->getKaryawan();
 		$data['dataNilaiKaryawan'] = $this->M_pegawai->select_nilai_karyawan();
 		$data['kriteria'] = $this->getKriteria();
 		$data['jabatan'] = $this->M_pegawai->fetchData('jabatan');
@@ -51,7 +51,8 @@ class Pegawai extends AUTH_Controller {
 		$this->form_validation->set_rules('nik', 'Nik', 'trim|required');
 		$this->form_validation->set_rules('posisi', 'Posisi', 'trim|required');
 		$this->form_validation->set_rules('jabatan', 'Jabatan', 'trim|required');
-
+		$this->form_validation->set_rules('tgl_periode', 'Tgl Periode', 'trim|required');
+		$this->form_validation->set_rules('target_penjualan', 'Target Penjualan', 'trim|required');
 
 		$data = $this->input->post();
 		if ($this->form_validation->run() == TRUE) {
@@ -170,6 +171,8 @@ class Pegawai extends AUTH_Controller {
 		$this->form_validation->set_rules('nik', 'Nik', 'trim|required');
 		$this->form_validation->set_rules('posisi', 'Posisi', 'trim|required');
 		$this->form_validation->set_rules('jabatan', 'Jabatan', 'trim|required');
+		$this->form_validation->set_rules('tgl_periode', 'Tgl Periode', 'trim|required');
+		$this->form_validation->set_rules('target_penjualan', 'Target Penjualan', 'trim|required');
 		// $this->form_validation->set_rules('level', 'Level', 'trim|required');
 
 		$data = $this->input->post();

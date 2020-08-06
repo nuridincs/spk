@@ -202,6 +202,7 @@
     $nilaiGroup[] = array(
       'id' => $dataNilai->id_karyawan,
       'nama' => $dataNilai->nama,
+      'tgl_periode' => $dataNilai->tgl_periode,
       'nilai' => number_format(round($kalkulasiRangking,2),2)
     );
   }
@@ -224,6 +225,7 @@
         <tr>
           <th>Nik</th>
           <th>Nama</th>
+          <th>tgl. Periode</th>
           <th>Nilai</th>
           <th>Ranking</th>
         </tr>
@@ -252,6 +254,7 @@
             <tr>
               <td><?php echo $value['id']; ?></td>
               <td><?php echo $value['nama']; ?></td>
+              <td><?php echo date('d-m-Y', strtotime($value['tgl_periode'])); ?></td>
               <td><?php echo $value['nilai']; ?></td>
               <td <?php echo $color ?> ><?php echo $value['rank']; ?></td>
             </tr>

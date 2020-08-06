@@ -16,6 +16,8 @@
           <th>Nama</th>
           <th>Jabatan</th>
           <th>Departemen</th>
+          <th>Tgl. Periode</th>
+          <th>Target Penjualan</th>
           <th style="text-align: center;">Aksi</th>
         </tr>
       </thead>
